@@ -1,0 +1,178 @@
+swagger: '2.0'
+info:
+  title: Loan Service API
+  description: >-
+    This service provides the API for interacting with Funds
+  version: 0.0.1
+host: localhost
+schemes:
+  - http
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /auth/login:
+    post:
+      summary: This endpoint helps to login into the application.
+      parameters:
+        - name: loginDetails
+          in: body
+          description: >-
+            The body contains the data about the login credentials.
+          required: true
+          schema:
+            $ref: '#/definitions/loginDetails'
+      tags:
+        - fund
+      responses:
+        '200':
+          description: Response object contains the status of the fund creation.
+  /auth/register:
+    post:
+      summary: This endpoint helps to register with the application.
+      description: >
+        This endpoint helps to register with application
+      parameters:
+        - name: registrationDetails
+          in: body
+          description: This contains the details that are needed to register with the application
+          required: true
+          schema:
+            $ref: '#/definitions/regDetails'
+      tags:
+        - stop
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the stop request.
+  /bank/add:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: bankDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/bankDetails'
+      tags:
+        - close
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/request:
+    post:
+      summary: This endpoint helps to add an request loan.
+      parameters:
+        - name: loanDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/loanDetails'
+      tags:
+        - close
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/negotiate:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: negotiationDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/negotiationData'
+      tags:
+        - close
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/accept:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: loanAcceptDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/loanAcceptance'
+      tags:
+        - close
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/change:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: loanDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/loanDetails'
+      tags:
+        - close
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/close:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: loanCloseDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/loanCloseDetails'
+      tags:
+        - close
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/installment:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: installmentDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/installmentDetails'
+      tags:
+        - close
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+definitions:
+  loginDetails:
+    type: object
+  regDetails:
+    type: object
+  bankDetails:
+    type: object
+  loanDetails:
+    type: object
+  negotiationData:
+    type: object
+  loanAcceptance:
+    type: object
+  loanCloseDetails:
+    type: object
+  installmentDetails:
+    type: object
