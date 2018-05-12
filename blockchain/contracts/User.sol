@@ -1,6 +1,6 @@
-pragma solidity ^0.4;
+pragma solidity ^0.4.23;
 
-import "./OnBoarding1.sol";
+import "./OnBoarding.sol";
 
 contract User {
     bytes32 public userId;
@@ -84,6 +84,7 @@ contract User {
 	    (, , lender, , amount, noOfInstallments, interestRate, amountToRepay, time) = User(msg.sender).getLoan(loanId, 1);
 	    bytes32[] memory paidInstallments;
         loansTaken[loanId] = Loan(this, userId, msg.sender, lenderId, amount, noOfInstallments, paidInstallments, interestRate, amount+(amount*time*interestRate)/100*100*365, time);
+		borrowerNonce = borrowerNonce + 1;
         return true;
     }
 

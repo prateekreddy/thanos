@@ -1,5 +1,3 @@
-'use strict';
-var Mockgen = require('../mockgen.js');
 /**
  * Operations on /loan/installment
  */
@@ -14,15 +12,11 @@ module.exports = {
      */
     post: {
         200: function (req, res, callback) {
-            /**
-             * Using mock data generator module.
-             * Replace this by actual data for the api.
-             */
-            Mockgen().responses({
-                path: '/loan/installment',
-                operation: 'post',
-                response: '200'
-            }, callback);
+            const signedTx = req.payload.signedTx;
+
+            web3.eth.sendSignedTransaction(signedTx).on('receipt', (receipt) => {
+                callback(null, receipt);
+            });
         }
     }
 };

@@ -4,25 +4,24 @@ const readContractVariables = require('../lib/readContractVariables');
 const config = require("../config/config.json");
 
 const web3 = new Web3(new Web3.providers.HttpProvider(config.geth.url));
+
 /**
- * Operations on /loan/request
+ * Operations on /loan/getNonce
  */
 module.exports = {
     /**
-     * summary: This endpoint helps to add an request loan.
+     * summary: This endpoint gives the number of loan taken till now.
      * description: 
-     * parameters: loanDetails
+     * parameters: borrower
      * produces: 
      * responses: 200
      * operationId: 
      */
-    post: {
+    get: {
         200: function (req, res, callback) {
-            const signedTx = req.payload.signedTx;
+            const borrower = req.query.borrower;
 
-            web3.eth.sendSignedTransaction(signedTx).on('receipt', (receipt) => {
-                callback(null, receipt);
-            });
+            readContractVariables.getNonce(web3, borrower, callback);
         }
     }
 };

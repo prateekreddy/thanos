@@ -1,29 +1,29 @@
 'use strict';
-var dataProvider = require('../../data/loan/accept.js');
+var dataProvider = require('../../data/loan/getAddressById.js');
 /**
- * Operations on /loan/accept
+ * Operations on /loan/getAddressById
  */
 module.exports = {
     /**
-     * summary: This endpoint helps to add an bank account to the application.
+     * summary: This endpoint gives the number of loan taken till now.
      * description: 
-     * parameters: loanAcceptDetails
+     * parameters: Id
      * produces: 
      * responses: 200
      */
-    post: function (req, reply, next) {
+    get: function (req, reply, next) {
         /**
          * Get the data for response 200
          * For response `default` status 200 is used.
          */
         var status = 200;
-        var provider = dataProvider['post']['200'];
+        var provider = dataProvider['get']['200'];
         provider(req, reply, function (err, data) {
             if (err) {
-                next(err);
+                reply(err);
                 return;
             }
-            reply(data && data.responses).code(status);
+            reply(data).code(status);
         });
     }
 };

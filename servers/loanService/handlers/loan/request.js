@@ -1,4 +1,3 @@
-'use strict';
 var dataProvider = require('../../data/loan/request.js');
 /**
  * Operations on /loan/request
@@ -20,10 +19,10 @@ module.exports = {
         var provider = dataProvider['post']['200'];
         provider(req, reply, function (err, data) {
             if (err) {
-                next(err);
+                reply(err);
                 return;
             }
-            reply(data && data.responses).code(status);
+            reply(data).code(status);
         });
     }
 };

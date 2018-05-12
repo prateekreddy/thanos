@@ -79,54 +79,6 @@ paths:
         '200':
           description: >-
             Response object contains the details regarding the fund closing request.
-  /loan/negotiate:
-    post:
-      summary: This endpoint helps to add an bank account to the application.
-      parameters:
-        - name: negotiationDetails
-          in: body
-          description: This contains the details that are needed to identify the fund to be closed.
-          required: true
-          schema:
-            $ref: '#/definitions/negotiationData'
-      tags:
-        - close
-      responses:
-        '200':
-          description: >-
-            Response object contains the details regarding the fund closing request.
-  /loan/accept:
-    post:
-      summary: This endpoint helps to add an bank account to the application.
-      parameters:
-        - name: loanAcceptDetails
-          in: body
-          description: This contains the details that are needed to identify the fund to be closed.
-          required: true
-          schema:
-            $ref: '#/definitions/loanAcceptance'
-      tags:
-        - close
-      responses:
-        '200':
-          description: >-
-            Response object contains the details regarding the fund closing request.
-  /loan/change:
-    post:
-      summary: This endpoint helps to add an bank account to the application.
-      parameters:
-        - name: loanDetails
-          in: body
-          description: This contains the details that are needed to identify the fund to be closed.
-          required: true
-          schema:
-            $ref: '#/definitions/loanDetails'
-      tags:
-        - close
-      responses:
-        '200':
-          description: >-
-            Response object contains the details regarding the fund closing request.
   /loan/close:
     post:
       summary: This endpoint helps to add an bank account to the application.
@@ -159,6 +111,30 @@ paths:
         '200':
           description: >-
             Response object contains the details regarding the fund closing request.
+  /loan/getNonce:
+    get:
+      summary: This endpoint gives the number of loan taken till now.
+      parameters: 
+        - name: borrower
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/getAddressById:
+    get:
+      summary: This endpoint gives the number of loan taken till now.
+      parameters: 
+        - name: Id
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
 definitions:
   loginDetails:
     type: object
@@ -167,10 +143,6 @@ definitions:
   bankDetails:
     type: object
   loanDetails:
-    type: object
-  negotiationData:
-    type: object
-  loanAcceptance:
     type: object
   loanCloseDetails:
     type: object
