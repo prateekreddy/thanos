@@ -1,0 +1,76 @@
+@font-face{
+    src: url("../fonts/Montserrat-Light.ttf");
+    font-family: montserrat_light;
+}
+
+@font-face{
+    src: url("../fonts/Montserrat-Regular.ttf");
+    font-family: montserrat_regular;
+}
+body{
+    background-color: #c1d5e5;
+    font-family: 'Montserrat', sans-serif;
+    margin :0;
+    overflow-y: hidden;
+}
+
+.upi{
+    color: #21273a;
+    font-family: montserrat_regular;
+    font-size: 22pt;
+    background-color: white;
+    margin: 0 0;
+    padding: 5pt 15pt;
+    box-shadow: 2px 2px 2px 1px #9aaab8;
+}
+
+.note{
+    color:#687182;
+    font-size: 11pt;
+    font-family: montserrat_light;
+    padding: 5pt 15pt;
+}
+
+.heading{
+    text-align: left;
+    text-justify: left;
+}
+
+img{
+    width:100%
+}
+.jio{
+    background-color: white;
+    padding: 3pt 10pt;
+    box-shadow: 2px 2px 2px 1px #9aaab8;
+    border-radius: 3px;
+}
+
+.account{
+    padding: 8pt 15pt;
+}
+
+.accountName{
+    width: 50%;
+    margin: 0;
+}
+
+.x{
+    width: 18%;
+}
+
+.y{
+    position: relative;
+    top: -28pt;
+    left: -45pt;
+    float: right;
+    font-family: montserrat_light;
+    color: #687182;
+    font-size: 12pt;
+}
+
+.z{
+    padding-top: 17pt;
+    padding-left: 25pt;
+    color:#3469c4
+}
