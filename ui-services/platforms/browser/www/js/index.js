@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+console.log("index.js")
 var app = {
     // Application Constructor
     initialize: function() {
@@ -47,3 +48,11 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+function register(){
+    console.log("register")
+    var registerDocument = document.getElementById("registerForm").elements;
+    var name = registerDocument[0].value;
+    var mobile = registerDocument[0].value;
+    var password = registerDocument[0].value;
+}
