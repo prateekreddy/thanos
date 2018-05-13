@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "./OnBoarding1.sol";
+import "./OnBoarding.sol";
 
 contract User {
     bytes32 public userId;
