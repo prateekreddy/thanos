@@ -32,7 +32,7 @@ const sellSchema = new Schema({
         type: Number,
         default:12
     },
-    installments:{
+    installment:{
         type: Number,
         default:12
     },
@@ -47,7 +47,7 @@ const sellSchema = new Schema({
     signature:{
         hash:{
             type:String,
-            default :sha256(this._id+""+this.nonce+""+this.installments+""+this.interest+""+this.contract+""+this.amount+""+this.updated),
+            default :sha256(this._id+""+this.nonce+""+this.installment+""+this.interest+""+this.contract+""+this.amount+""+this.updated),
             validate:{
                 validator:function(text){
                     if(isHex(text))

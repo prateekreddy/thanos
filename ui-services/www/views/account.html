@@ -62,7 +62,7 @@
                         YOUR CREDIT SCORE
                     </div>
                     <div class="creditscore" id="scorenumber">
-                        
+                        1000
                     </div>
                 </div>
           </div>
@@ -76,7 +76,7 @@
                         <button onclick="borrowClick()" class="myBtn borrowBtn">I want to Borrow Money</button>
                 </div>
                 <div class="wrapper lend" id="lend">
-                        <button class="myBtn lendBtn">I want to Lend Money</button>
+                        <button onclick="lendClick()" class="myBtn lendBtn">I want to Lend Money</button>
                 </div>
         </div>
     </div>
@@ -87,13 +87,13 @@
             </div>
         </div>
     </div>
-    <div class="account">
+    <!-- <div class="account">
         <div class="welcome">
-            <div class="userid" id="midPendingTx">
+            <div onclick="pendingClick()" class="userid" id="midPendingTx">
                 Pending Transactions
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="account">
         <div class="welcome" id="midCloseTx">
             <div class="userid">
@@ -108,7 +108,13 @@
             </div>
         </div>
     </div>
-    
+    <div class="account">
+        <div class="welcome">
+            <div class="userid" id="logout">
+                Logout
+            </div>
+        </div>
+    </div>
     
     <script type="text/javascript" src="../cordova.js"></script>
     

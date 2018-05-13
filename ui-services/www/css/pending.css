@@ -128,11 +128,17 @@ button{
 
 .myBtn{
     position: relative;
-    top: 20pt;
+    top: -2pt;
 }
 
 .myBtn2{
     position: relative;
-    top:31pt;
+    top:20pt;
     background-color: #9aaab8
+}
+
+.myBtn3{
+    position: relative;
+    top:9pt;
+    background-color: #3469c4
 }

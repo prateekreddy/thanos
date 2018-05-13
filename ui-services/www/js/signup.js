@@ -19,10 +19,11 @@ function register(){
             }).then(function(response){
                 console.log(response.data)
                 if(response.data.status=="Registered"){
-                    window.localStorage.setItem("key",key)
+                    window.localStorage.setItem("key",JSON.stringify(key))
                     window.localStorage.setItem("mobile",mobile)
                     window.localStorage.setItem("name",name)
                     window.localStorage.setItem("userId",response.data.userId)
+                    window.localStorage.setItem("password",password)
                     window.location.href="upi.html?mobile="+mobile
                 }else{
                     alert("Registration failed")

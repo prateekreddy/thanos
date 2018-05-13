@@ -54,7 +54,7 @@
                   Loan Amount
               </div>
               <div class="wrapper">
-                <input onkeypress="checkinputs()" type="number" id="loanamount" name="loanamount" placeholder="Amount(Rs)">
+                <input maxlength="7" type="number" id="loanamount" name="loanamount" placeholder="Amount(Rs)">
               </div>
               
           </div>
@@ -66,7 +66,7 @@
                 Tenure
             </div>
             <div class="wrapper wrapperInputTag">
-                    <input onkeypress="checkinputs()" type="number" id="days" name="days" placeholder="Days">
+                    <input maxlength = "5" type="number" id="days" name="days" placeholder="Days">
             </div>
             <!-- <div class="wrapper monthInputTag">
                     <input type="number" id="months" name="months" placeholder="Months">
@@ -86,7 +86,7 @@
                 Interest Rate
             </div>
             <div class="wrapper interestInputTag">
-                    <input onkeypress="checkinputs()" type="number" id="interest" name="interest" placeholder="%">
+                    <input maxlength = "5" type="number" id="interest" name="interest" placeholder="%">
             </div>
         </div>
     </div>
@@ -94,20 +94,25 @@
     <div class="account">
         <div class="inputBox">
             <div class="inputTag timeInputTag">
-                Installments
+                installment
             </div>
             <div class="wrapper installmentInputTag">
-                    <input onkeypress="checkinputs()" type="number" id="installment" name="installment" placeholder="12">
+                    <input maxlength = "5" type="number" id="installment" name="installment" placeholder="12">
             </div>
         </div>
     </div>
     
     <div class="account">
             <button id="editLoanButton" class="myBtn" onclick="editLoan()">Edit Loan</button>
+            <button id="negotiateButton" class="myBtn3" onclick="negotiate()">Negotiations</button>
             <button class="myBtn2" onclick="cancelRequest()">Cancel</button>
     </div>
     
     <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/sha3.js"></script>
+    <script type="text/javascript" src="../js/keythereum.min.js"></script>
+    <script type="text/javascript" src="../js/elliptic.min.js"></script>
+    <script type="text/javascript" src="../js/ethUtil.js"></script>
     <script type="text/javascript" src="../js/config.js"></script>    
     <script type="text/javascript" src="../js/axios.js"></script>    
     <script type="text/javascript" src="../js/jquery.js"></script>
