@@ -21,7 +21,8 @@ module.exports = {
         var provider = dataProvider['post']['200'];
         provider(req, reply, function (err, data) {
             if (err) {
-                reply(err);
+                console.log(err);
+                reply(err).code(403);
                 return;
             }
             reply(data).code(status);

@@ -18,7 +18,10 @@ mongoose.connect('mongodb://localhost/test', function (err) {
 var Server = new Hapi.Server();
 
 Server.connection({
-    port: 8000
+    port: 8000,
+    routes: {
+        cors: true
+    }
 });
 
 Server.register({

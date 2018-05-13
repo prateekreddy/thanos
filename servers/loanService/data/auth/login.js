@@ -19,13 +19,15 @@ module.exports = {
             const phoneNumber = req.payload.phNo;
             const password = req.payload.password;
 
+            console.log(req.payload, phoneNumber, password)
+
             // check login
             user.where({ phoneNumber }).findOne((err, user) => {
-                if(err || !user) {
+                if(err && !user) {
                     callback({err: "User not found. Please register before logging in"});
                 } else {
                     if(user.password == password) {
-                        callback(null, {login: true});
+                        callback(null, {login: true, userId: user.userId});
                     } else {
                         callback({err: "Password or Phone number incorrect, please check and try again."}, null);
                     }
