@@ -2,6 +2,9 @@ const user = require('../../models/config.models.users');
 /**
  * Operations on /auth/login
  */
+
+ // sample request: curl -X POST --data '{"phNo": "1234531234654", "password": "test1"}' -H "Content-Type: application/json" localhost:8000/auth/login
+
 module.exports = {
     /**
      * summary: This endpoint helps to login into the application.

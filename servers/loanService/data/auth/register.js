@@ -25,6 +25,8 @@ const checkIfUserExists = (phoneNumber, callback) => {
     });
 }
 
+// sample request: curl -X POST --data '{"phNo": "1234531234654", "password": "test", "name": "test", "userKey": "0xca35b7d915458ef540ade6068dfe2f44e8fa733c"}' -H "Content-Type: application/json" localhost:8000/auth/register
+
 module.exports = {
     /**
      * summary: This endpoint helps to register with the application.
