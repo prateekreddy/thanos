@@ -68,12 +68,12 @@
             <div class="wrapper wrapperInputTag">
                     <input type="number" id="days" name="days" placeholder="Days">
             </div>
-            <div class="wrapper monthInputTag">
+            <!-- <div class="wrapper monthInputTag">
                     <input type="number" id="months" name="months" placeholder="Months">
-            </div>
-            <div class="wrapper yearInputTag">
+            </div> -->
+            <!-- <div class="wrapper yearInputTag">
                     <input type="number" id="years" name="years" placeholder="Years">
-            </div>
+            </div> -->
         
             
 
@@ -109,9 +109,15 @@
     </div>
 
     <div class="account">
-            <button class="myBtn" onclick="window.location.href='account.html'">Submit Request</button>
+            <button class="myBtn" onclick="submitRequest()">Submit Request</button>
+            <button class="myBtn2" onclick="cancelRequest()">Cancel Request</button>
     </div>
+    
     <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/config.js"></script>    
+    <script type="text/javascript" src="../js/axios.js"></script>    
+    <script type="text/javascript" src="../js/borrow.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
     <script type="text/javascript">
         app.initialize();

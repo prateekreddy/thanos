@@ -12,16 +12,22 @@ function register(){
         createAccount(password,function(key){
             console.log(thanosConfig)
             axios.post(thanosConfig.loginServer+":8000"+"/auth/register",{
-                phNo:"mobile",
+                phNo:mobile,
                 name:name,
+                password:password,
                 userKey: "0x"+key.address
-            }).then(function(data){
-                console.log(data)
-                window.localStorage.setItem("key",key)
-                window.localStorage.setItem("mobile",mobile)
-                window.localStorage.setItem("name",name)
-                window.localStorage.setItem("userId",data.userId)
-                window.location.href="upi.html?mobile="+mobile
+            }).then(function(response){
+                console.log(response.data)
+                if(response.data.status=="Registered"){
+                    window.localStorage.setItem("key",key)
+                    window.localStorage.setItem("mobile",mobile)
+                    window.localStorage.setItem("name",name)
+                    window.localStorage.setItem("userId",response.data.userId)
+                    window.location.href="upi.html?mobile="+mobile
+                }else{
+                    alert("Registration failed")
+                }
+                
             }).catch(function(err){
                 console.log(err)
                 alert(err)

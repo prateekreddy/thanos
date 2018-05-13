@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var axios = require('axios');
 
-var inputSanitate = require('../lib/validation')
+var inputSanitate = require('../lib/validation').inputSanitate
 var Buy = require('../models/mongo.config.buy');
 
-var contractService = ""
+var contractService = "http://10.200.208.43:8000"
 
 router.get('/list',function(req,res){
     Buy.find({}).sort({amount:1}).exec(function(err,docs){
@@ -13,10 +13,34 @@ router.get('/list',function(req,res){
     })
 })
 
+router.post("/count",function(req,res,next){
+    if(inputSanitate(req.body,["user"])){
+        Buy.count({user:req.body.user,expired:false},function(err,count){
+            res.send({"status":"y","info":count})
+        })
+    }else{
+        res.send({"status":"n","info":"User doesnt exists"})
+    }
+})
+
+router.post("/loan",function(req,res,next){
+    if(inputSanitate(req.body,["user"])){
+        Buy.findOne({user:req.body.user,expired:false},function(err,doc){
+            console.log(err)
+            console.log(doc)
+            res.send({"status":"y","doc":doc})
+        })
+    }else{
+        res.send({"status":"n","info":"User doesnt exists"})
+    }
+})
+
 router.post('/', function(req, res, next) {
-   if(inputSanitate(req.body,["user","contract","pubkey","amount","interest","duration","installments"])){
-    axios.get('/user?id='+req.body.user).then(function(response){
-        if(req.body.contract == response){
+   if(inputSanitate(req.body,["user","contract","pubkey","amount","interest","duration","installment"])){
+       Buy.count({user:req.body.user,expired:false},function(err,count){
+        console.log(err)
+        console.log(count)
+        if(count < 1){
             Buy.create({
                 nonce:req.body.nonce,
                 user:req.body.user,
@@ -27,19 +51,19 @@ router.post('/', function(req, res, next) {
                 interest:req.body.amount,
                 signature:req.body.signature,
                 updated:req.body.updated
-              },function(err,doc){
-                  if(err !=null){
+            },function(err,doc){
+                if(err !=null){
                     console.log(err)
                     res.send({"status":"n","info":"mongo error"})
-                  }else{
-                    res.send({"status":"y","info":"request created successfully"});
-                  }
-                  
-              })            
+                }else{
+                    res.send({"status":"y","info":"request created successfully",doc:doc});
+                }
+                
+            })
         }else{
-            res.send({"status":"n","info":"contract address mismatch"})
+            res.send({"status":"n","info":"Pending loan already exists"})
         }
-    })
+       })
    }else{
        res.send({"status":"n","info":"missing inputs"})
    }
@@ -47,23 +71,23 @@ router.post('/', function(req, res, next) {
 
 router.post('/update', function(req, res, next) {
     if(inputSanitate(req.body,["user","contract","pubkey","amount","interest","duration","installments"])){
-     axios.get('/user?id='+req.body.user).then(function(response){
-         if(req.body.contract == response){
-             Buy.findOneAndUpdate({
-                user:req.body.user,
-                expired: false
-            },
-            {
-                duration: req.body.duration,
-                amount:req.body.amount,
-                interest:req.body.amount,
-                signature:req.body.signature,
-                updated:req.body.updated,
-            })            
-         }else{
-             res.send({"status":"n","info":"contract address mismatch"})
-         }
-     })
+        Buy.findOneAndUpdate({
+            user:req.body.user,
+            expired: false
+        },
+        {
+            duration: req.body.duration,
+            amount:req.body.amount,
+            interest:req.body.amount,
+            signature:req.body.signature,
+            updated:req.body.updated,
+        },{new:false},function(err,doc){
+            console.log(err)
+            console.log(doc)
+            res.send({"status":"y","doc":doc})
+        }).catch(function(err){
+            console.log(err)
+        })
     }else{
         res.send({"status":"n","info":"missing inputs"})
     }

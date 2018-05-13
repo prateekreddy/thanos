@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose')
+var inputSanitate = require('../lib/validation')
 var Buy = require('../models/mongo.config.buy');
 var Sell = require('../models/mongo.config.sell')
 /* GET home page. */

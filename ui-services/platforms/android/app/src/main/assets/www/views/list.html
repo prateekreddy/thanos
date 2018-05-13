@@ -38,7 +38,7 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="../css/account.css" />
+    <link rel="stylesheet" type="text/css" href="../css/list.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <title>Jio Hackathon</title>
@@ -46,76 +46,52 @@
 
 <body class="container">
     <div class="row heading">
-        <p class="upi">My Account</p>
+        <p class="upi">Open Loan Requests</p>
     </div>
     <div class="account">
-          <div class="welcome">
-              <div class="userid">
-                    <a id="username">Welcome Lorem,</a>
-              </div>
-              <div class="userlocation">
-                    <a id="userId">Member since 2018</a>
-              </div>
-                <div class="score">
-                    <div class="creditscore" id="scoretag">
-                        YOUR CREDIT SCORE
-                    </div>
-                    <div class="creditscore" id="scorenumber">
-                        400/500
-                    </div>
-                </div>
-          </div>
-    </div>
-    <div class="account">
-        <div class="welcome">
-                <div class="userid">
-                    <a>Initiate a new transaction</a>
-                </div>
-                <div class="wrapper borrow" id="borrow">
-                        <button onclick="borrowClick()" class="myBtn borrowBtn">I want to Borrow Money</button>
-                </div>
-                <div class="wrapper lend" id="lend">
-                        <button class="myBtn lendBtn">I want to Lend Money</button>
-                </div>
+        <div id="loanlist">
+            <table id="customers">
+                    <tr>
+                        <th>Company</th>
+                        <th>Contact</th>
+                        <th>Country</th>
+                    </tr>
+                    <tr>
+                        <td>Alfreds Futterkiste</td>
+                        <td>Maria Anders</td>
+                        <td>Germany</td>
+                    </tr>
+                    <tr>
+                        <td>Berglunds snabbköp</td>
+                        <td>Christina Berglund</td>
+                        <td>Sweden</td>
+                    </tr>
+                    <tr>
+                        <td>Centro comercial Moctezuma</td>
+                        <td>Francisco Chang</td>
+                        <td>Mexico</td>
+                    </tr>
+                    <tr>
+                        <td>Ernst Handel</td>
+                        <td>Roland Mendel</td>
+                        <td>Austria</td>
+                    </tr>
+                </table>
         </div>
+            
     </div>
+
     <div class="account">
-        <div class="welcome" id="midRunningTx">
-            <div class="userid">
-                Running Transactions            
-            </div>
-        </div>
+            <button class="myBtn" onclick="submitRequest()">Submit Request</button>
+            <button class="myBtn2" onclick="cancelRequest()">Cancel Request</button>
     </div>
-    <div class="account">
-        <div class="welcome">
-            <div class="userid" id="midPendingTx">
-                Pending Transactions
-            </div>
-        </div>
-    </div>
-    <div class="account">
-        <div class="welcome" id="midCloseTx">
-            <div class="userid">
-                Closed Transactions
-            </div>
-        </div>
-    </div>
-    <div class="account">
-        <div class="welcome" id="midupi">
-            <div class="userid">
-                UPI Accounts
-            </div>
-        </div>
-    </div>
-    
     
     <script type="text/javascript" src="../cordova.js"></script>
-    
-    <script src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/config.js"></script>
-    <script type="text/javascript" src="../js/axios.js"></script>
+    <script type="text/javascript" src="../js/config.js"></script>    
+    <script type="text/javascript" src="../js/axios.js"></script>    
+    <script type="text/javascript" src="../js/list.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
-    <script type="text/javascript" src="../js/account.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>

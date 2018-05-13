@@ -75,7 +75,7 @@ input[type=number]{
     float: right;
     position: relative;
     top: -38pt;
-    left: 2pt;
+    /* left: 2pt; */
 }
 
 .installmentInputTag{
@@ -83,15 +83,15 @@ input[type=number]{
     float: right;
     position: relative;
     top: -38pt;
-    left: 2pt;
+    /* left: 2pt; */
 }
 
 .wrapperInputTag{
-    width: 15%;
+    width: 30%;
     float: right;
     position: relative;
     top: -38pt;
-    left: -2pt;
+    /* left: 2pt; */
 }
 
 .monthInputTag{
@@ -120,7 +120,19 @@ button{
     border-radius: 2px;
     box-shadow: #34aa54;
     font-size: 11pt;
-    padding: 3pt 25%;
+    padding: 15pt 25%;
     font-family: montserrat_light;
-    width: 100%
+    width: 100%;
+    border: none;
+}
+
+.myBtn{
+    position: relative;
+    top: 20pt;
+}
+
+.myBtn2{
+    position: relative;
+    top:31pt;
+    background-color: #9aaab8
 }

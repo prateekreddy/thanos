@@ -136,3 +136,10 @@ button{
     top:31pt;
     background-color: #9aaab8
 }
+
+#loanlist{
+    background-color: white;
+    padding: 8pt;
+    box-shadow: 2px 2px 2px 2px white;
+    border-radius: 2px; 
+}

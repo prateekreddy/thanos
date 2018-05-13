@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Sell = require('../models/mongo.config.sell');
 var Buy = require('../models/mongo.config.buy')
-
+var inputSanitate = require('../lib/validation')
 
 router.get('/list',function(req,res,next){
   Buy.findById("5af70a29ce0be56223566a88")
