@@ -1,0 +1,114 @@
+@font-face{
+    src: url("../fonts/Montserrat-Light.ttf");
+    font-family: montserrat_light;
+}
+
+@font-face{
+    src: url("../fonts/Montserrat-Regular.ttf");
+    font-family: montserrat_regular;
+}
+body{
+    background-color: #c1d5e5;
+    font-family: montserrat_regular;
+    margin :0;
+    overflow-y: hidden;
+    font-size: 16pt;
+}
+
+.upi{
+    color: #21273a;
+    font-family: montserrat_regular;
+    background-color: white;
+    margin: 0 0;
+    padding: 5pt 15pt;
+    box-shadow: 2px 2px 2px 1px #9aaab8;
+}
+
+.heading{
+    text-align: left;
+    text-justify: left;
+    font-family: montserrat_light;
+}
+
+.account{
+    padding: 8pt 15pt;
+}
+
+.welcome{
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px grey;
+    border-radius: 2px;
+    padding: 8pt 15pt;
+}
+
+.userid{
+    font-family: montserrat_regular;
+    font-size: 16pt;
+}
+
+.userlocation{
+    font-family: montserrat_light;
+    font-size: 11pt;
+    color: grey;
+}
+
+#scoretag{
+    position: relative;
+    left: 0;
+}
+
+#scorenumber{
+    position: relative;
+    right:0;
+    float: right;
+    top: -14pt;
+}
+
+.score{
+    border-top: 1px solid grey;
+    padding-top: 10pt;
+    margin-top: 10pt; 
+    color: #4285f5;
+    font-size: 11pt;
+}
+
+.wrapper{
+    padding: 0pt 15pt;
+    text-align: center
+}
+
+button{
+    background-color: #34aa54;
+    color: #ffffff;
+    border-radius: 2px;
+    box-shadow: #34aa54;
+    font-size: 11pt;
+    padding: 3pt 13%;
+    font-family: montserrat_light;
+    border: none;
+}
+
+.lend{
+    margin-top:7pt;
+    padding-top: 0;
+    margin-bottom: 11pt;
+}
+
+.borrow{
+    margin-top: 11pt;
+    margin-bottom: 0pt;
+    padding-bottom: 6pt;
+}
+
+.myBtn{
+    width:100%
+}
+
+.lendBtn{
+    background-color:blue;    
+    box-shadow: 2px 2px 2px 2px blue;
+}
+
+.borrowBtn{
+    box-shadow: 2px 2px 2px 2px #34aa54;
+}

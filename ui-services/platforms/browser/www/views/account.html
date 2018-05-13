@@ -51,10 +51,10 @@
     <div class="account">
           <div class="welcome">
               <div class="userid">
-                    <a>Welcome Lorem,</a>
+                    <a id="username">Welcome Lorem,</a>
               </div>
               <div class="userlocation">
-                    <a>Member since 2015</a>
+                    <a id="userId">Member since 2018</a>
               </div>
                 <div class="score">
                     <div class="creditscore" id="scoretag">
@@ -71,16 +71,16 @@
                 <div class="userid">
                     <a>Initiate a new transaction</a>
                 </div>
-                <div class="wrapper borrow">
-                        <button class="myBtn borrowBtn" onclick="window.location.href='borrow.html'">I want to Borrow Money</button>
+                <div class="wrapper borrow" id="borrow">
+                        <button class="myBtn borrowBtn">I want to Borrow Money</button>
                 </div>
-                <div class="wrapper lend">
-                        <button class="myBtn lendBtn" onclick="window.location.href='account.html'">I want to Lend Money</button>
+                <div class="wrapper lend" id="lend">
+                        <button class="myBtn lendBtn">I want to Lend Money</button>
                 </div>
         </div>
     </div>
     <div class="account">
-        <div class="welcome">
+        <div class="welcome" id="midRunningTx">
             <div class="userid">
                 Running Transactions            
             </div>
@@ -88,22 +88,31 @@
     </div>
     <div class="account">
         <div class="welcome">
-            <div class="userid">
+            <div class="userid" id="midPendingTx">
                 Pending Transactions
             </div>
         </div>
     </div>
     <div class="account">
-        <div class="welcome">
+        <div class="welcome" id="midCloseTx">
             <div class="userid">
                 Closed Transactions
+            </div>
+        </div>
+    </div>
+    <div class="account">
+        <div class="welcome" id="midupi">
+            <div class="userid">
+                UPI Accounts
             </div>
         </div>
     </div>
     
     
     <script type="text/javascript" src="../cordova.js"></script>
+    <script src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/account.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>

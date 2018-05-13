@@ -48,11 +48,3 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
-
-function register(){
-    console.log("register")
-    var registerDocument = document.getElementById("registerForm").elements;
-    var name = registerDocument[0].value;
-    var mobile = registerDocument[0].value;
-    var password = registerDocument[0].value;
-}

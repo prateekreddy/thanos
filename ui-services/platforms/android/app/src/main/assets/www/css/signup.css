@@ -1,0 +1,128 @@
+@font-face{
+    src: url("../fonts/Montserrat-Light.ttf");
+    font-family: montserrat_light;
+}
+
+@font-face{
+    src: url("../fonts/Montserrat-Regular.ttf");
+    font-family: montserrat_regular;
+}
+body{
+    background-color: #4285f5;
+    font-family: 'Montserrat', sans-serif;
+    margin :0;
+    overflow-y: hidden;
+}
+
+.heading{
+    font-size: 10pt;
+    color: #dadfe5;
+    text-align: center;
+    font-family: montserrat_light;
+}
+
+.welcome{
+    color: #ffffff;
+    font-style: light;
+    text-align: center;
+    font-size: 18pt;
+    font-family: montserrat_regular;
+}
+
+.custom_margin{
+    margin: 5pt;
+}
+
+.custom_margin1{
+    margin-top: 20%;
+}
+.pad{
+    padding: 7% 13%;
+    border: white;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    text-justify: auto;
+    font-size: 10pt;
+    font-family: montserrat_regular;
+    text-decoration: none;
+    color:#ffffff;
+    text-align: center;
+}
+
+img{
+    display: block;
+    margin: auto;
+    width: 40%;
+    height: auto;
+}
+
+input[type=text]{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #b4b6c1;
+    background-color: #e6edf7;
+    width: 100%
+}
+
+input[type=password]{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #b4b6c1;
+    background-color: #e6edf7;
+    width: 100%
+}
+
+input[type=number]{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #b4b6c1;
+    background-color: #e6edf7;
+    width: 100%
+}
+.formPlace{
+    width: 100%;
+    /* padding: 12pt 20pt; */
+    background-color: #e6edf7;
+    margin: 0;
+    bottom: 0;
+    position: absolute;
+    box-shadow: -2px -2px 2px 1px grey;
+    padding-top: 10pt;
+}
+
+
+button{
+    background-color: #34aa54;
+    color: #ffffff;
+    border-radius: 2px;
+    box-shadow: #34aa54;
+    font-size: 15pt;
+    padding: 3pt 25%;
+    font-family: montserrat_light;
+}
+
+label{
+    font-family: montserrat_light;
+    padding: 12px 0 0 0;
+    margin-left: 10pt;
+}
+
+.wrapper{
+    padding: 15pt;
+    text-align: center
+}
+
+form{
+    margin-top: 5pt;
+}
+
+.accountName{
+    margin-top: -20px
+}
