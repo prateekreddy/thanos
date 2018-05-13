@@ -16,7 +16,7 @@ contract OnBoarding {
     }
     
     function createUser(bytes32 userId, address userKey) public onlyOwner {
-        require(users[userId] != 0x00);
+        require(users[userId] == 0x00);
         address user = new User(userId, userKey);
         require(user != 0x00);
         users[userId] = user;
