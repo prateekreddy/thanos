@@ -5,7 +5,7 @@ var Buy = require('../models/mongo.config.buy')
 
 
 router.get('/list',function(req,res,next){
-  Buy.findById("5af6b376746441315ccf7627")
+  Buy.findById("5af70a29ce0be56223566a88")
       .populate('bid')
       .exec(function(err,data){
           console.log(err);

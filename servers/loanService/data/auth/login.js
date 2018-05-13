@@ -1,5 +1,4 @@
-'use strict';
-var Mockgen = require('../mockgen.js');
+const user = require('../../models/config.models.users');
 /**
  * Operations on /auth/login
  */
@@ -14,15 +13,21 @@ module.exports = {
      */
     post: {
         200: function (req, res, callback) {
-            /**
-             * Using mock data generator module.
-             * Replace this by actual data for the api.
-             */
-            Mockgen().responses({
-                path: '/auth/login',
-                operation: 'post',
-                response: '200'
-            }, callback);
+            const phoneNumber = req.payload.phNo;
+            const password = req.payload.password;
+
+            // check login
+            user.where({ phoneNumber }).findOne((err, user) => {
+                if(err || !user) {
+                    callback({err: "User not found. Please register before logging in"});
+                } else {
+                    if(user.password == password) {
+                        callback(null, {login: true});
+                    } else {
+                        callback({err: "Password or Phone number incorrect, please check and try again."}, null);
+                    }
+                }
+            })
         }
     }
 };

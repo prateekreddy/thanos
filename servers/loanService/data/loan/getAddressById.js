@@ -1,7 +1,7 @@
 const Web3 = require("web3");
 
-const readContractVariables = require('../lib/readContractVariables');
-const config = require("../config/config.json");
+const readContractVariables = require('../../lib/readContractVariables');
+const config = require("../../config/config.json");
 
 const web3 = new Web3(new Web3.providers.HttpProvider(config.geth.url));
 

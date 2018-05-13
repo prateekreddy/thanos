@@ -4,6 +4,17 @@ var Hapi = require('hapi');
 var Swaggerize = require('swaggerize-hapi');
 var Path = require('path');
 
+var mongoose = require('mongoose');
+var db
+mongoose.connect('mongodb://localhost/test', function (err) {
+ 
+   if (err) throw err;
+ 
+   console.log('Successfully connected');
+   db = mongoose.connection
+ 
+});
+
 var Server = new Hapi.Server();
 
 Server.connection({

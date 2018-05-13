@@ -18,5 +18,5 @@ contract.deploy({
 }, console.log).on('receipt', (receipt) => {
     config.onBoardingAddress = receipt.contractAddress;
     fs.writeFileSync('../config/config.json', JSON.stringify(config, null, 2))
-    console.log(contract deployed and updated in config);
+    console.log("contract deployed and updated in config");
 });
