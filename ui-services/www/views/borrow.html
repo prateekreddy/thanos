@@ -38,37 +38,80 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="../css/signup.css" />
+    <link rel="stylesheet" type="text/css" href="../css/borrow.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <title>Jio Hackathon</title>
 </head>
 
 <body class="container">
-    <div class="row custom_margin1">
-        <p class="heading custom_margin">Online Lending Platform</p>
-        <p class="welcome custom_margin">Welcome to Thanos</p>
+    <div class="row heading">
+        <p class="upi">Borrow Money</p>
     </div>
-    <div class="row">
-        <img src="../img/logo.png" alt="no image">
+    <div class="account">
+          <div class="inputBox">
+              <div class="inputTag">
+                  Loan Amount
+              </div>
+              <div class="wrapper">
+                <input type="number" id="loanamount" name="loanamount" placeholder="Amount(Rs)">
+              </div>
+              
+          </div>
     </div>
-    <div class="formPlace">
-        <form id="registerForm">
-            <label for="name">Name</label><br>
-            <input type="text" id="name" name="name"><br>
-            <label for="mobile">Mobile</label><br>
-            <input type="number" id="mobile" name="mobile"><br>
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password"><br>
-        </form>
-        <div class="wrapper">
-            <button class="myBtn" onclick="register()">Register</button>
+
+    <div class="account">
+        <div class="inputBox">
+            <div class="inputTag timeInputTag">
+                Tenure
+            </div>
+            <div class="wrapper wrapperInputTag">
+                    <input type="number" id="days" name="days" placeholder="Days">
+            </div>
+            <div class="wrapper monthInputTag">
+                    <input type="number" id="months" name="months" placeholder="Months">
+            </div>
+            <div class="wrapper yearInputTag">
+                    <input type="number" id="years" name="years" placeholder="Years">
+            </div>
+        
+            
+
         </div>
     </div>
     
+    <div class="account">
+        <div class="inputBox">
+            <div class="inputTag timeInputTag">
+                Interest Rate
+            </div>
+            <div class="wrapper interestInputTag">
+                    <input type="number" id="interest" name="interest" placeholder="%">
+            </div>
+        </div>
+    </div>
+      
+    <div class="account">
+        <div class="inputBox">
+            <div class="inputTag timeInputTag">
+                Installments
+            </div>
+            <div class="wrapper installmentInputTag">
+                    <input type="number" id="installment" name="installment" placeholder="12">
+            </div>
+        </div>
+    </div>
+    
+    <div class="account">
+            <div class="z note">
+                    This initiated transaction will expired after 15 days of inactivity
+            </div>
+    </div>
 
+    <div class="account">
+            <button class="myBtn" onclick="window.location.href='account.html'">Submit Request</button>
+    </div>
     <script type="text/javascript" src="../cordova.js"></script>
-    <script type="text/javascript" src="../js/axios.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
     <script type="text/javascript">
         app.initialize();

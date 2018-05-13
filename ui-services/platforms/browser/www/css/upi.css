@@ -9,7 +9,7 @@
 }
 body{
     background-color: #c1d5e5;
-    font-family: 'Montserrat', sans-serif;
+    font-family: montserrat_regular;
     margin :0;
     overflow-y: hidden;
 }
@@ -73,4 +73,14 @@ img{
     padding-top: 17pt;
     padding-left: 25pt;
     color:#3469c4
+}
+button{
+    background-color: #34aa54;
+    color: #ffffff;
+    border-radius: 2px;
+    box-shadow: #34aa54;
+    font-size: 11pt;
+    padding: 3pt 25%;
+    font-family: montserrat_light;
+    width: 100%
 }

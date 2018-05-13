@@ -38,37 +38,71 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="../css/signup.css" />
+    <link rel="stylesheet" type="text/css" href="../css/account.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <title>Jio Hackathon</title>
 </head>
 
 <body class="container">
-    <div class="row custom_margin1">
-        <p class="heading custom_margin">Online Lending Platform</p>
-        <p class="welcome custom_margin">Welcome to Thanos</p>
+    <div class="row heading">
+        <p class="upi">My Account</p>
     </div>
-    <div class="row">
-        <img src="../img/logo.png" alt="no image">
+    <div class="account">
+          <div class="welcome">
+              <div class="userid">
+                    <a>Welcome Lorem,</a>
+              </div>
+              <div class="userlocation">
+                    <a>Member since 2015</a>
+              </div>
+                <div class="score">
+                    <div class="creditscore" id="scoretag">
+                        YOUR CREDIT SCORE
+                    </div>
+                    <div class="creditscore" id="scorenumber">
+                        400/500
+                    </div>
+                </div>
+          </div>
     </div>
-    <div class="formPlace">
-        <form id="registerForm">
-            <label for="name">Name</label><br>
-            <input type="text" id="name" name="name"><br>
-            <label for="mobile">Mobile</label><br>
-            <input type="number" id="mobile" name="mobile"><br>
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password"><br>
-        </form>
-        <div class="wrapper">
-            <button class="myBtn" onclick="register()">Register</button>
+    <div class="account">
+        <div class="welcome">
+                <div class="userid">
+                    <a>Initiate a new transaction</a>
+                </div>
+                <div class="wrapper borrow">
+                        <button class="myBtn borrowBtn" onclick="window.location.href='borrow.html'">I want to Borrow Money</button>
+                </div>
+                <div class="wrapper lend">
+                        <button class="myBtn lendBtn" onclick="window.location.href='account.html'">I want to Lend Money</button>
+                </div>
+        </div>
+    </div>
+    <div class="account">
+        <div class="welcome">
+            <div class="userid">
+                Running Transactions            
+            </div>
+        </div>
+    </div>
+    <div class="account">
+        <div class="welcome">
+            <div class="userid">
+                Pending Transactions
+            </div>
+        </div>
+    </div>
+    <div class="account">
+        <div class="welcome">
+            <div class="userid">
+                Closed Transactions
+            </div>
         </div>
     </div>
     
-
+    
     <script type="text/javascript" src="../cordova.js"></script>
-    <script type="text/javascript" src="../js/axios.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
