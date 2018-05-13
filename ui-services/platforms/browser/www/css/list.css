@@ -115,10 +115,10 @@ input[type=number]{
 }
 
 button{
-    background-color: #34aa54;
+    background-color: #3469c4;
     color: #ffffff;
     border-radius: 2px;
-    box-shadow: #34aa54;
+    box-shadow: #3469c4;
     font-size: 11pt;
     padding: 15pt 25%;
     font-family: montserrat_light;
@@ -142,4 +142,37 @@ button{
     padding: 8pt;
     box-shadow: 2px 2px 2px 2px white;
     border-radius: 2px; 
+    height: 250pt;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
 }
+
+#customers {
+    /* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; */
+    font-family: montserrat_light;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-family: montserrat_regular;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:nth-child(odd){background-color: white;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #9aaab8;
+    color: white;
+}
+

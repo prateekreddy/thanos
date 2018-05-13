@@ -11,17 +11,17 @@ const redirections = [
         href: "../views/",
         active: false
     }, {
-        id: "midPendingTx",
-        href: "../views/pending.html",
-        active: true
-    }, {
         id: "midCloseTx",
         href: "../views/",
         active: false
     }, {
         id: "lend",
-        href: "../views/lend.html",
+        href: "../views/list.html",
         active: true
+    },{
+        id:"logout",
+        href: "../index.html",
+        active:true
     }
 ];
 
@@ -45,4 +45,32 @@ function borrowClick(){
         window.location.href = "../views/pending.html"
     }
  })
+}
+
+function getCreditScore() {
+    axios.get(thanosConfig.loginServer+":8000/loan/getReputation?userId="+localStorage.getItem("userId")).then((resp) => {
+        console.log(resp.data);
+        document.getElementById("scorenumber").innerHTML = resp.data;
+    });
+}
+
+
+getCreditScore();
+
+function pendingClick(){
+    axios.post(thanosConfig.mongoService+":3001/buy/count",{
+        user:localStorage.getItem("userId")
+    }).then(function(response){
+        console.log(response.data)
+       if(response.data.info == 0){
+            alert("No Pending Loans")
+            window.location.href = "../views/borrow.html";
+        }else{
+            window.location.href = "../views/pending.html"
+       }
+    })
+}
+
+function lendClick(){
+    console.log("lendClick")
 }

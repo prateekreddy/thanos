@@ -7,8 +7,8 @@ var Buy = require('../models/mongo.config.buy');
 
 var contractService = "http://10.200.208.43:8000"
 
-router.get('/list',function(req,res){
-    Buy.find({}).sort({amount:1}).exec(function(err,docs){
+router.post('/list',function(req,res){
+    Buy.find({expired:false}).sort({amount:1}).exec(function(err,docs){
         res.send(docs)
     })
 })
@@ -48,9 +48,10 @@ router.post('/', function(req, res, next) {
                 pubkey: req.body.pubkey,
                 amount:req.body.amount,
                 duration: req.body.duration,
-                interest:req.body.amount,
+                interest:req.body.interest,
                 signature:req.body.signature,
-                updated:req.body.updated
+                updated:req.body.updated,
+                installment: req.body.installment
             },function(err,doc){
                 if(err !=null){
                     console.log(err)
@@ -70,7 +71,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/update', function(req, res, next) {
-    if(inputSanitate(req.body,["user","contract","pubkey","amount","interest","duration","installments"])){
+    if(inputSanitate(req.body,["user","contract","pubkey","amount","interest","duration","installment"])){
         Buy.findOneAndUpdate({
             user:req.body.user,
             expired: false
@@ -78,9 +79,10 @@ router.post('/update', function(req, res, next) {
         {
             duration: req.body.duration,
             amount:req.body.amount,
-            interest:req.body.amount,
+            interest:req.body.interest,
             signature:req.body.signature,
             updated:req.body.updated,
+            installment: req.body.installment
         },{new:false},function(err,doc){
             console.log(err)
             console.log(doc)
@@ -94,7 +96,7 @@ router.post('/update', function(req, res, next) {
  });
  
  router.post('/confirm',function(req,res,next){
-    if(inputSanitate(req.body,["user","contract","pubkey","amount","interest","duration","installments"])){
+    if(inputSanitate(req.body,["user","contract","pubkey","amount","interest","duration","installment"])){
         axios.get('/user?id='+req.body.user).then(function(response){
             if(req.body.contract == response){
                 Buy.findOneAndUpdate({

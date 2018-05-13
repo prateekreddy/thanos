@@ -48,33 +48,14 @@
     <div class="row heading">
         <p class="upi">Open Loan Requests</p>
     </div>
-    <div class="account">
+    <div class="account loanblock">
         <div id="loanlist">
             <table id="customers">
                     <tr>
-                        <th>Company</th>
-                        <th>Contact</th>
-                        <th>Country</th>
-                    </tr>
-                    <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                    </tr>
-                    <tr>
-                        <td>Berglunds snabbköp</td>
-                        <td>Christina Berglund</td>
-                        <td>Sweden</td>
-                    </tr>
-                    <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                        <td>Mexico</td>
-                    </tr>
-                    <tr>
-                        <td>Ernst Handel</td>
-                        <td>Roland Mendel</td>
-                        <td>Austria</td>
+                        <th>Amt</th>
+                        <th>Dur</th>
+                        <th>%</th>
+                        <th>Ins</th>
                     </tr>
                 </table>
         </div>
@@ -82,8 +63,8 @@
     </div>
 
     <div class="account">
-            <button class="myBtn" onclick="submitRequest()">Submit Request</button>
-            <button class="myBtn2" onclick="cancelRequest()">Cancel Request</button>
+            <button class="myBtn" onclick="negotiate()">Approve</button>
+            <button class="myBtn2" onclick="cancelRequest()">Cancel</button>
     </div>
     
     <script type="text/javascript" src="../cordova.js"></script>
