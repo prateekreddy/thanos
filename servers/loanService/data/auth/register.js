@@ -14,8 +14,9 @@ const web3 = new Web3(new Web3.providers.HttpProvider(config.geth.url));
  */
 
 const checkIfUserExists = (phoneNumber, callback) => {
-    user.where({ phoneNumber }).findOne((err, user) => {
+    user.where({ phoneNumber: parseInt(phoneNumber) }).findOne((err, user) => {
         if(err) {
+            console.log(err)
             callback({err: "Error creating user. Please try again."}, null);
         } else if(user) {
             callback(null, false);
@@ -53,15 +54,12 @@ module.exports = {
                     const onBoardingContract = new web3.eth.Contract(JSON.parse(compiledContracts["OnBoarding.sol:OnBoarding"].abi), onBoardingAddress);
                     const userId = uid();
                     const encodedUserId = "0x"+rlp.encode(userId).toString('hex');
-                    console.log(encodedUserId, userKey);
                     onBoardingContract.methods.createUser(encodedUserId, userKey).send({
                         from: config.geth.account.address,
                         gas: web3.utils.toHex(99999999)
                     }).on('receipt', (receipt) => {
-                        console.log(receipt)
                         if(receipt.status) {
                             readContractVariables.getAddressById(web3, userId, (err, res) => {
-                                console.log("Im here")
                                 if(!err) {
                                     user.create({
                                         name,
@@ -77,16 +75,13 @@ module.exports = {
                                         }
                                     })
                                 } else {
-                                    console.log(err);
                                     callback({err: "error creating user, Please try again."}, null);
                                 }
                             })
                         } else {
-                            callback(err);
                             callback({err: "user creation failed. Please try again."}, null);
                         }
                     }).on('error', (err, receipt) => {
-                        console.log(err);
                         callback(err, receipt);
                     });
                 } else {

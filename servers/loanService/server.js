@@ -19,7 +19,9 @@ var Server = new Hapi.Server();
 
 Server.connection({
     port: 8000,
-    routes: {cors: true}
+    routes: {
+        cors: true
+    }
 });
 
 Server.register({
