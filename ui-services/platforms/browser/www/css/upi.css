@@ -17,7 +17,7 @@ body{
 .upi{
     color: #21273a;
     font-family: montserrat_regular;
-    font-size: 22pt;
+    font-size: 16pt;
     background-color: white;
     margin: 0 0;
     padding: 5pt 15pt;
@@ -80,7 +80,15 @@ button{
     border-radius: 2px;
     box-shadow: #34aa54;
     font-size: 11pt;
-    padding: 3pt 25%;
+    padding: 15pt 25%;
     font-family: montserrat_light;
-    width: 100%
+    width: 100%;
+    border: none;
+    position: relative;
+    bottom: -200pt;
+    margin-bottom: 10pt;
+}
+
+.wrapper{
+    text-align: center
 }
