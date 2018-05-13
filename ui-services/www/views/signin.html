@@ -53,20 +53,22 @@
         <img src="../img/logo.png" alt="no image">
     </div>
     <div class="formPlace">
-        <form>
+        <form id="signinForm">
             <label for="mobile">Mobile</label><br>
             <input type="number" id="mobile" name="mobile"><br>
             <label for="password">Password</label><br>
             <input type="password" id="password" name="password"><br>
         </form>
         <div class="wrapper">
-            <button class="myBtn" onclick="window.location.href='account.html'">Login</button>
+            <button class="myBtn" onclick="signin()">Login</button>
         </div>
     </div>
     
 
     <script type="text/javascript" src="../cordova.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/axios.js"></script>
+    <script type="text/javascript" src="../js/signin.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
