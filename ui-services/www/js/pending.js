@@ -51,7 +51,6 @@ function editLoan(){
             alert(response.data.info)
         }
     })
-
 }
 
 // document.getElementById("loanamount").value == tempDoc.amount && document.getElementById("interest").value == tempDoc.interest && document.getElementById("days").value == tempDoc.duration && document.getElementById("installment").value == tempDoc.installment

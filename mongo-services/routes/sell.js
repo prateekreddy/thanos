@@ -55,6 +55,54 @@ router.post('/', function(req, res, next) {
   });
 })
 
+router.post('/bid', (req, res, next) => {
+  Sell.create({
+    lenderId:req.body.lenderId,
+    borrowerId: req.body.borrowerId,
+    loanId: req.body.loanId,
+    amount:req.body.amount,
+    duration: req.body.duration,
+    interest:req.body.interest,
+    installment: req.body.installment
+  }, function(err,doc){
+    console.log(doc);
+    if(!err){
+        Buy.findOneAndUpdate({
+          _id: req.body.loanId,
+          expired: false
+        }, {
+          $push:{
+            bids: doc._id
+          }   
+        }, (err, res) => {
+          if(!err) {
+            res.send({"status":"y","info":"bid submitted successfully",doc:doc});
+          } else {
+            res.send({"status":"n","info":"mongo error"})
+          }
+        })
+    } else {
+      res.send({"status":"n","info":"mongo error"})
+    }
+    
+})
+
+  
+})
+
+router.post('/bid/list', (req, res, next) => {
+  const lenderId = req.body.lenderId;
+  Sell.find({
+    lenderId
+  }).exec((err, doc) => {
+    if(!err) {
+      res.send({"status": "y", "info": "negotioation list", list: doc});
+    } else {
+      res.send({"status":"n","info":"mongo error"})
+    }
+  })
+});
+
 module.exports = router;
 
 

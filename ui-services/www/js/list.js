@@ -32,175 +32,186 @@ function selectloan(element){
     if(element.style.backgroundColor == ""){
         for (let i = 0; i < document.getElementsByClassName("selectedColumns").length; i++) {
             let elem = document.getElementsByClassName("selectedColumns")[i];
-            elem.style.backgroundColor = ""       
+            elem.style.backgroundColor = ""                  
         }    
         element.style.backgroundColor = "#c1d5e5"
     }else if (element.style.backgroundColor == "rgb(193, 213, 229)"){
-        element.style.backgroundColor = ""
+        element.style.backgroundColor = ""       
     }
 }
 
-function negotiate(){
-    console.log("negotiate")
-    for (let i = 0; i < document.getElementsByClassName("selectedColumns").length; i++) {
-        let element = document.getElementsByClassName("selectedColumns")[i];
-        console.log(element.id)
-        if(element.style.backgroundColor == "rgb(193, 213, 229)"){
-            loanId = element.id.split("_")[0];
-            lenderId = localStorage.getItem("userId");
-            borrowerId = element.id.split("_")[0];
+// function approve(){
+//     console.log("negotiate")
+//     for (let i = 0; i < document.getElementsByClassName("selectedColumns").length; i++) {
+//         let element = document.getElementsByClassName("selectedColumns")[i];
+//         console.log(element.id)
+//         if(element.style.backgroundColor == "rgb(193, 213, 229)"){
+//             loanId = element.id.split("_")[0];
+//             lenderId = localStorage.getItem("userId");
+//             borrowerId = element.id.split("_")[1];
 
-            axios.post(thanosConfig.mongoService+":3001/sell",{
-                id: element.id.split("_")[0],
-                lender: localStorage.getItem("userId")
-            }).then(function(response){
-                if(response.data.status == "y"){
-                    //send to blockchain confirm
-                    //check if success or fail
-                    doc = response.data.doc;
-                    axios.post(thanosConfig.loginServer+":8000/loan/getNonce",{
-                        borrower: element.id.split("_")[1]
-                    }).then(function(response){
-                            let nonce = response.data;
-                            console.log(nonce)
-                            axios.post(thanosConfig.loginServer+":8000/loan/getAddressById",{
-                                Id:localStorage.getItem("userId")
-                            }).then(function(response){
-                                let lenderAddress = response.data
-                                axios.post(thanosConfig.loginServer+":8000/loan/getAddressById",{
-                                    Id:element.id.split("_")[1]
-                                }).then(function(response){
-                                    let borrowerAddress = response.data;
-                                    axios.post(thanosConfig.loginServer+":8000/loan/getAbi",{
-                                        entityType:"user"
-                                    }).then(function(response){
-                                        ABI = response.data
-                                        axios.post(thanosConfig.loginServer+":8000/loan/getEthTxNonce",{
-                                            address:pubkey
-                                        }).then(function(response){
-                                            let txNonce = response.data;
-                                            // var rawTx = signedTx(ABI,lenderAddress,nonce,"0x"+rlp.encode(loanId).toString('hex'),duration,installment,interest,"0x"+rlp.encode(borrowerId).toString("hex"),borrowerAddress,amount,"0x"+doc.signature.hash,parseInt(doc.signature.version),"0x"+doc.signature.r,"0x"+doc.signature.s,txNonce)
-                                            // console.log(rawTx)
-                                            // abi,contractAddress,contractNonce, loanId, time, installment, interestRate, borrowerId, borrowerAddress, amount, hashedValue, version, r,s,count
-                                            axios.post(thanosConfig.loginServer+":8000/loan/request",{
-                                                // abi:ABI,
-                                                lenderAddress:lenderAddress,
-                                                nonce:nonce,
-                                                loanId:"0x"+rlp.encode(loanId).toString('hex'),
-                                                duration:parseInt(duration),
-                                                installment:parseInt(installment),
-                                                interest:parseInt(interest),
-                                                borrowerId:"0x"+rlp.encode(borrowerId).toString("hex"),
-                                                borrowerAddress:borrowerAddress,
-                                                amount:parseInt(amount),
-                                                hashedValue:"0x"+doc.signature.hash,
-                                                v:parseInt(doc.signature.version),
-                                                r:"0x"+doc.signature.r,
-                                                s:"0x"+doc.signature.s,
-                                                txNonce:parseInt(txNonce),
-                                                privateKey:privateKey.toString("hex"),
-                                                address: pubkey
-                                            }).then(function(response){
-                                                if(response.data.status == "y"){
-                                                    alert("Approve Success, raw transaction created successfully")
-                                                }else{
-                                                    axios.post(thanosConfig.mongoService+":3001/sell/unset",{
-                                                        id:element.id.split("_")[0]
-                                                    }).then(function(response){
-                                                        if(response.data.status == "y"){
-                                                            alert("Rejected")
-                                                        }else{
-                                                            alert("Server Fail")
-                                                        }
-                                                    })
-                                                }
-                                            }).catch(function(error){
-                                                console.log(error)
-                                                axios.post(thanosConfig.mongoService+":3001/sell/unset",{
-                                                    id:element.id.split("_")[0]
-                                                }).then(function(response){
-                                                    if(response.data.status == "y"){
-                                                        alert("Rejected")
-                                                    }else{
-                                                        alert("Server Fail")
-                                                    }
-                                                })
-                                            })
+//             axios.post(thanosConfig.mongoService+":3001/sell",{
+//                 id: element.id.split("_")[0],
+//                 lender: localStorage.getItem("userId")
+//             }).then(function(response){
+//                 if(response.data.status == "y"){
+//                     //send to blockchain confirm
+//                     //check if success or fail
+//                     doc = response.data.doc;
+//                     axios.post(thanosConfig.loginServer+":8000/loan/getNonce",{
+//                         borrower: element.id.split("_")[1]
+//                     }).then(function(response){
+//                             let nonce = response.data;
+//                             console.log(nonce)
+//                             axios.post(thanosConfig.loginServer+":8000/loan/getAddressById",{
+//                                 Id:localStorage.getItem("userId")
+//                             }).then(function(response){
+//                                 let lenderAddress = response.data
+//                                 axios.post(thanosConfig.loginServer+":8000/loan/getAddressById",{
+//                                     Id:element.id.split("_")[1]
+//                                 }).then(function(response){
+//                                     let borrowerAddress = response.data;
+//                                     axios.post(thanosConfig.loginServer+":8000/loan/getAbi",{
+//                                         entityType:"user"
+//                                     }).then(function(response){
+//                                         ABI = response.data
+//                                         axios.post(thanosConfig.loginServer+":8000/loan/getEthTxNonce",{
+//                                             address:pubkey
+//                                         }).then(function(response){
+//                                             let txNonce = response.data;
+//                                             // var rawTx = signedTx(ABI,lenderAddress,nonce,"0x"+rlp.encode(loanId).toString('hex'),duration,installment,interest,"0x"+rlp.encode(borrowerId).toString("hex"),borrowerAddress,amount,"0x"+doc.signature.hash,parseInt(doc.signature.version),"0x"+doc.signature.r,"0x"+doc.signature.s,txNonce)
+//                                             // console.log(rawTx)
+//                                             // abi,contractAddress,contractNonce, loanId, time, installment, interestRate, borrowerId, borrowerAddress, amount, hashedValue, version, r,s,count
+//                                             axios.post(thanosConfig.loginServer+":8000/loan/request",{
+//                                                 // abi:ABI,
+//                                                 lenderAddress:lenderAddress,
+//                                                 nonce:nonce,
+//                                                 loanId:"0x"+rlp.encode(loanId).toString('hex'),
+//                                                 duration:parseInt(duration),
+//                                                 installment:parseInt(installment),
+//                                                 interest:parseInt(interest),
+//                                                 borrowerId:"0x"+rlp.encode(borrowerId).toString("hex"),
+//                                                 borrowerAddress:borrowerAddress,
+//                                                 amount:parseInt(amount),
+//                                                 hashedValue:"0x"+doc.signature.hash,
+//                                                 v:parseInt(doc.signature.version),
+//                                                 r:"0x"+doc.signature.r,
+//                                                 s:"0x"+doc.signature.s,
+//                                                 txNonce:parseInt(txNonce),
+//                                                 privateKey:privateKey.toString("hex"),
+//                                                 address: pubkey
+//                                             }).then(function(response){
+//                                                 if(response.data.status == "y"){
+//                                                     alert("Approve Success, raw transaction created successfully")
+//                                                 }else{
+//                                                     axios.post(thanosConfig.mongoService+":3001/sell/unset",{
+//                                                         id:element.id.split("_")[0]
+//                                                     }).then(function(response){
+//                                                         if(response.data.status == "y"){
+//                                                             alert("Rejected")
+//                                                         }else{
+//                                                             alert("Server Fail")
+//                                                         }
+//                                                     })
+//                                                 }
+//                                             }).catch(function(error){
+//                                                 console.log(error)
+//                                                 axios.post(thanosConfig.mongoService+":3001/sell/unset",{
+//                                                     id:element.id.split("_")[0]
+//                                                 }).then(function(response){
+//                                                     if(response.data.status == "y"){
+//                                                         alert("Rejected")
+//                                                     }else{
+//                                                         alert("Server Fail")
+//                                                     }
+//                                                 })
+//                                             })
                                             
-                                        }).catch(function(error){
-                                            console.log(error)
-                                            axios.post(thanosConfig.mongoService+":3001/sell/unset",{
-                                                id:element.id.split("_")[0]
-                                            }).then(function(response){
-                                                if(response.data.status == "y"){
-                                                    alert("Rejected")
-                                                }else{
-                                                    alert("Server Fail")
-                                                }
-                                            })
-                                        })
-                                    }).catch(function(error){
-                                        console.log(error)
-                                        axios.post(thanosConfig.mongoService+":3001/sell/unset",{
-                                            id:element.id.split("_")[0]
-                                        }).then(function(response){
-                                            if(response.data.status == "y"){
-                                                alert("Rejected")
-                                            }else{
-                                                alert("Server Fail")
-                                            }
-                                        })
-                                    })
-                                }).catch(function(error){
-                                    console.log(error)
-                                    axios.post(thanosConfig.mongoService+":3001/sell/unset",{
-                                        id:element.id.split("_")[0]
-                                    }).then(function(response){
-                                        if(response.data.status == "y"){
-                                            alert("Rejected")
-                                        }else{
-                                            alert("Server Fail")
-                                        }
-                                    })
-                                })
-                            }).catch(function(error){
-                                console.log(error)
-                                axios.post(thanosConfig.mongoService+":3001/sell/unset",{
-                                    id:element.id.split("_")[0]
-                                }).then(function(response){
-                                    if(response.data.status == "y"){
-                                        alert("Rejected")
-                                    }else{
-                                        alert("Server Fail")
-                                    }
-                                })
-                            })
-                    }).catch(function(error){
-                        console.log(error)
-                        axios.post(thanosConfig.mongoService+":3001/sell/unset",{
-                            id:element.id.split("_")[0]
-                        }).then(function(response){
-                            if(response.data.status == "y"){
-                                alert("Rejected")
-                            }else{
-                                alert("Server Fail")
-                            }
-                        })
-                    })
+//                                         }).catch(function(error){
+//                                             console.log(error)
+//                                             axios.post(thanosConfig.mongoService+":3001/sell/unset",{
+//                                                 id:element.id.split("_")[0]
+//                                             }).then(function(response){
+//                                                 if(response.data.status == "y"){
+//                                                     alert("Rejected")
+//                                                 }else{
+//                                                     alert("Server Fail")
+//                                                 }
+//                                             })
+//                                         })
+//                                     }).catch(function(error){
+//                                         console.log(error)
+//                                         axios.post(thanosConfig.mongoService+":3001/sell/unset",{
+//                                             id:element.id.split("_")[0]
+//                                         }).then(function(response){
+//                                             if(response.data.status == "y"){
+//                                                 alert("Rejected")
+//                                             }else{
+//                                                 alert("Server Fail")
+//                                             }
+//                                         })
+//                                     })
+//                                 }).catch(function(error){
+//                                     console.log(error)
+//                                     axios.post(thanosConfig.mongoService+":3001/sell/unset",{
+//                                         id:element.id.split("_")[0]
+//                                     }).then(function(response){
+//                                         if(response.data.status == "y"){
+//                                             alert("Rejected")
+//                                         }else{
+//                                             alert("Server Fail")
+//                                         }
+//                                     })
+//                                 })
+//                             }).catch(function(error){
+//                                 console.log(error)
+//                                 axios.post(thanosConfig.mongoService+":3001/sell/unset",{
+//                                     id:element.id.split("_")[0]
+//                                 }).then(function(response){
+//                                     if(response.data.status == "y"){
+//                                         alert("Rejected")
+//                                     }else{
+//                                         alert("Server Fail")
+//                                     }
+//                                 })
+//                             })
+//                     }).catch(function(error){
+//                         console.log(error)
+//                         axios.post(thanosConfig.mongoService+":3001/sell/unset",{
+//                             id:element.id.split("_")[0]
+//                         }).then(function(response){
+//                             if(response.data.status == "y"){
+//                                 alert("Rejected")
+//                             }else{
+//                                 alert("Server Fail")
+//                             }
+//                         })
+//                     })
                     
-                }else{
-                    alert("Approve Failed")
-                }
-            })
-        }else{
+//                 }else{
+//                     alert("Approve Failed")
+//                 }
+//             })
+//         }else{
 
-        }
+//         }
             
-    }
-}
+//     }
+// }
 
 function cancelRequest(){
     window.location.href="../views/account.html"
+}
+
+function negotiate() {
+    for (let i = 0; i < document.getElementsByClassName("selectedColumns").length; i++) {
+    let element = document.getElementsByClassName("selectedColumns")[i];
+        console.log(element.id)
+        if(element.style.backgroundColor == "rgb(193, 213, 229)"){
+            idList = element.id.split("_");
+            window.location.href = "../views/negotiate.html?loanId="+idList[0]+"&borrowerId="+idList[1];
+        }
+    };
 }
 
 // function negotiate(){

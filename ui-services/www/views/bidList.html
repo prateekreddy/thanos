@@ -38,7 +38,7 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="../css/borrow.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bidList.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <title>Jio Hackathon</title>
@@ -46,79 +46,36 @@
 
 <body class="container">
     <div class="row heading">
-        <p class="upi">Borrow Money</p>
+        <p class="upi">My Loan Bids</p>
     </div>
-    <div class="account">
-          <div class="inputBox">
-              <div class="inputTag">
-                  Loan Amount
-              </div>
-              <div class="wrapper">
-                <input maxlength="7" type="number" id="loanamount" name="loanamount" placeholder="Amount(Rs)">
-              </div>
-              
-          </div>
-    </div>
-
-    <div class="account">
-        <div class="inputBox">
-            <div class="inputTag timeInputTag">
-                Tenure
-            </div>
-            <div class="wrapper wrapperInputTag">
-                    <input maxlength="5" type="number" id="days" name="days" placeholder="Days">
-            </div>
-            <!-- <div class="wrapper monthInputTag">
-                    <input type="number" id="months" name="months" placeholder="Months">
-            </div> -->
-            <!-- <div class="wrapper yearInputTag">
-                    <input type="number" id="years" name="years" placeholder="Years">
-            </div> -->
-        
+    <div class="account loanblock">
+        <div id="loanlist">
+            <table id="customers">
+                    <tr>
+                        <th>Amt</th>
+                        <th>Days</th>
+                        <th>%</th>
+                        <th>Ins</th>
+                    </tr>
+                </table>
+        </div>
             
-
-        </div>
-    </div>
-    
-    <div class="account">
-        <div class="inputBox">
-            <div class="inputTag timeInputTag">
-                Interest Rate
-            </div>
-            <div class="wrapper interestInputTag">
-                    <input maxlength="5" type="number" id="interest" name="interest" placeholder="%">
-            </div>
-        </div>
-    </div>
-      
-    <div class="account">
-        <div class="inputBox">
-            <div class="inputTag timeInputTag">
-                installment
-            </div>
-            <div class="wrapper installmentInputTag">
-                    <input maxlength="5" type="number" id="installment" name="installment" placeholder="12">
-            </div>
-        </div>
-    </div>
-    
-    <div class="account z">
-        This initiated transaction will expire after 15 days of inactivity
     </div>
 
-    <div class="account">
-            <button class="myBtn" onclick="submitRequest()">Submit Request</button>
-            <button class="myBtn2" onclick="cancelRequest()">Cancel Request</button>
+    <div class="account buttons">
+        <button class="myBtn green" onclick="approve()">Approve</button>
+        <button class="myBtn darkBlue" onclick="negotiate()">Reject</button>
+        <button class="myBtn myBtn2" onclick="cancelRequest()">Cancel</button>
     </div>
     
     <script type="text/javascript" src="../cordova.js"></script>
-    <script type="text/javascript" src="../js/sha3.js"></script>
-    <script type="text/javascript" src="../js/keythereum.min.js"></script>
-    <script type="text/javascript" src="../js/elliptic.min.js"></script>
-    <script type="text/javascript" src="../js/ethUtil.js"></script>
+    <!-- <script type="text/javascript" src="../js/web3.min.js"></script> -->
     <script type="text/javascript" src="../js/config.js"></script>    
-    <script type="text/javascript" src="../js/axios.js"></script>    
-    <script type="text/javascript" src="../js/borrow.js"></script>
+    <script type="text/javascript" src="../js/rlp.js"></script>    
+    <script type="text/javascript" src="../js/axios.js"></script>
+    <script type="text/javascript" src="../js/ethereumjs-tx.js"></script>
+    <script type="text/javascript" src="../js/keythereum.min.js"></script>
+    <script type="text/javascript" src="../js/bidList.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
     <script type="text/javascript">

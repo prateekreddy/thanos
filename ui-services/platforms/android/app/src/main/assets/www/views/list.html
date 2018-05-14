@@ -46,14 +46,14 @@
 
 <body class="container">
     <div class="row heading">
-        <p class="upi">Open Loan Requests</p>
+        <p class="upi">New Loan Requests</p>
     </div>
     <div class="account loanblock">
         <div id="loanlist">
             <table id="customers">
                     <tr>
                         <th>Amt</th>
-                        <th>Dur</th>
+                        <th>Days</th>
                         <th>%</th>
                         <th>Ins</th>
                     </tr>
@@ -62,9 +62,11 @@
             
     </div>
 
-    <div class="account">
-            <button class="myBtn" onclick="negotiate()">Approve</button>
-            <button class="myBtn2" onclick="cancelRequest()">Cancel</button>
+    <div class="account buttons">
+        <button class="myBtn green" onclick="approve()">Approve</button>
+        <button class="myBtn darkBlue" onclick="negotiate()">Negotiate</button>
+        <button class="myBtn lightblue" onclick="negotiateList()">Negotiation list</button>
+        <button class="myBtn myBtn2" onclick="cancelRequest()">Cancel</button>
     </div>
     
     <script type="text/javascript" src="../cordova.js"></script>

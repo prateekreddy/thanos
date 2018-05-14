@@ -38,7 +38,7 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="../css/borrow.css" />
+    <link rel="stylesheet" type="text/css" href="../css/repay.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <title>Jio Hackathon</title>
@@ -46,27 +46,24 @@
 
 <body class="container">
     <div class="row heading">
-        <p class="upi">Borrow Money</p>
-    </div>
-    <div class="account">
-          <div class="inputBox">
-              <div class="inputTag">
-                  Loan Amount
-              </div>
-              <div class="wrapper">
-                <input maxlength="7" type="number" id="loanamount" name="loanamount" placeholder="Amount(Rs)">
-              </div>
-              
-          </div>
+        <p class="upi">Repay Loan</p>
     </div>
 
-    <div class="account">
+    <div class="account nonEditable">
+            <div class="inputBox">
+                    <div class="inputTag timeInputTag">
+                        % Loan Repaid
+                    </div>
+                    <div class="wrapper installmentInputTag">
+                            <input maxlength="5" type="number" id="installment" name="installment" placeholder="%">
+                    </div>
+                </div>
         <div class="inputBox">
             <div class="inputTag timeInputTag">
-                Tenure
+                Remaining Amount
             </div>
             <div class="wrapper wrapperInputTag">
-                    <input maxlength="5" type="number" id="days" name="days" placeholder="Days">
+                    <input maxlength="5" type="number" id="days" name="days" placeholder="Rs" readonly="readonly">
             </div>
             <!-- <div class="wrapper monthInputTag">
                     <input type="number" id="months" name="months" placeholder="Months">
@@ -78,37 +75,30 @@
             
 
         </div>
-    </div>
-    
-    <div class="account">
         <div class="inputBox">
             <div class="inputTag timeInputTag">
-                Interest Rate
+                Remaining Duration
             </div>
             <div class="wrapper interestInputTag">
-                    <input maxlength="5" type="number" id="interest" name="interest" placeholder="%">
+                    <input maxlength="5" type="number" id="interest" name="interest" placeholder="Days" readonly="readonly">
             </div>
         </div>
-    </div>
-      
-    <div class="account">
-        <div class="inputBox">
-            <div class="inputTag timeInputTag">
-                installment
-            </div>
-            <div class="wrapper installmentInputTag">
-                    <input maxlength="5" type="number" id="installment" name="installment" placeholder="12">
-            </div>
-        </div>
-    </div>
-    
-    <div class="account z">
-        This initiated transaction will expire after 15 days of inactivity
     </div>
 
     <div class="account">
-            <button class="myBtn" onclick="submitRequest()">Submit Request</button>
-            <button class="myBtn2" onclick="cancelRequest()">Cancel Request</button>
+        <div class="inputBox">
+            <div class="inputTag timeInputTag">
+                Repay Amount
+            </div>
+            <div class="wrapper repayAmountTag">
+                    <input maxlength="5" type="number" id="installment" name="installment" placeholder="Rs">
+            </div>
+        </div>
+    </div>
+
+    <div class="account">
+            <button class="myBtn" onclick="pay()">Pay</button>
+            <button class="myBtn2" onclick="cancelRequest()">Cancel</button>
     </div>
     
     <script type="text/javascript" src="../cordova.js"></script>
@@ -118,7 +108,7 @@
     <script type="text/javascript" src="../js/ethUtil.js"></script>
     <script type="text/javascript" src="../js/config.js"></script>    
     <script type="text/javascript" src="../js/axios.js"></script>    
-    <script type="text/javascript" src="../js/borrow.js"></script>
+    <script type="text/javascript" src="../js/repay.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
     <script type="text/javascript">

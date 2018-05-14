@@ -4,21 +4,17 @@ const isHex = require('is-hex')
 const sha256 = require('sha256')
 
 const sellSchema = new Schema({
-    user:{
-        type:String,
-        required:true,
-    },
-    contract:{
-        type:String,
-        required:true,
-    },
-    nonce:{
-        required: true,
-        type: Number
-    },
-    pubkey: {
+    lenderId:{
         type:String,
         required:true
+    }, 
+    borrowerId: {
+        type:String,
+        required:true 
+    },
+    loanId: {
+        type: String,
+        required: true
     },
     amount: {
         type:Number,

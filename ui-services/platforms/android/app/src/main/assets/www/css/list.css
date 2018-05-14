@@ -118,7 +118,7 @@ button{
     background-color: #3469c4;
     color: #ffffff;
     border-radius: 2px;
-    box-shadow: #3469c4;
+    /* box-shadow: 2px 2px 2px 2px #3469c4; */
     font-size: 11pt;
     padding: 15pt 25%;
     font-family: montserrat_light;
@@ -126,15 +126,29 @@ button{
     border: none;
 }
 
+.buttons {
+    margin-top: 0;
+}
+
 .myBtn{
     position: relative;
-    top: 20pt;
+    margin: 2pt 0;
+}
+
+.adjacent {
+    width: 45%;
 }
 
 .myBtn2{
-    position: relative;
-    top:31pt;
     background-color: #9aaab8
+}
+
+.green {
+    background-color: #34aa54;
+}
+
+.lightblue {
+    background-color: rgb(87, 152, 226)
 }
 
 #loanlist{
@@ -142,7 +156,7 @@ button{
     padding: 8pt;
     box-shadow: 2px 2px 2px 2px white;
     border-radius: 2px; 
-    height: 250pt;
+    height: 200pt;
     overflow-y: auto;
     overflow-x: hidden;
     text-align: center;
