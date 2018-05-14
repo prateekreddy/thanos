@@ -49,7 +49,7 @@ router.post('/', function(req, res, next) {
   },function(err,doc){
     console.log(err)
     console.log(doc)
-      res.send({"status":"y","info":"loan approved"})
+      res.send({"status":"y","info":"loan approved",doc:doc})
   }).catch(function(err){
     res.send({"status":"n","info":"loan failed"})
   });
