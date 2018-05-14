@@ -20,6 +20,25 @@ const getAddressById = (web3, id, callback) => {
     })
 };
 
+const getReputation = (web3, userId, callback) => {
+    console.log(userId);
+    getAddressById(web3, userId, (err, address) => {
+        if(!err) {
+            const userAddress = address;
+            const contract = new web3.eth.Contract(JSON.parse(compiledContracts["User.sol:User"].abi), userAddress);
+            contract.methods.reputation().call((err, result) => {
+                if(!err) {
+                    callback(null, result);
+                } else {
+                    callback(err, null);
+                }
+            });
+        } else {
+            callback(err, null);
+        }
+    });
+};
+
 const getNonce = (web3, borrower, callback) => {
     const contract = new web3.eth.Contract(JSON.parse(compiledContracts["OnBoarding.sol:OnBoarding"].abi));
     contract.methods.borrowerNonce().call({from: config.geth.account.address}, (err, result) => {
@@ -33,5 +52,6 @@ const getNonce = (web3, borrower, callback) => {
 
 module.exports = {
     getAddressById,
-    getNonce
+    getNonce,
+    getReputation
 }

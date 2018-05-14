@@ -78,3 +78,11 @@ function lendClick(){
 function logout(){
     navigator.app.exitApp();
 }
+function getCreditScore() {
+    axios.get(thanosConfig.loginServer+":8000/loan/getReputation?userId="+localStorage.getItem("userId")).then((resp) => {
+        console.log(response.data);
+        $("#scorenumber").html = response.data;
+    });
+}
+
+getCreditScore();

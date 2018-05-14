@@ -135,6 +135,18 @@ paths:
         '200':
           description: >-
             Response object contains the details regarding the fund closing request.
+  /loan/getReputation:
+    get:
+      summary: This endpoint gives the reputation given the userId
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
 definitions:
   loginDetails:
     type: object

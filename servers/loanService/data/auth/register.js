@@ -68,7 +68,6 @@ module.exports = {
                                         contractAddress: res
                                     }, (err, result) => {
                                         if(err) {
-                                            console.log(err)
                                             callback(err, null);
                                         } else {
                                             callback(null, {userId, status: "Registered"});
