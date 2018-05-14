@@ -74,3 +74,7 @@ function pendingClick(){
 function lendClick(){
     console.log("lendClick")
 }
+
+function logout(){
+    navigator.app.exitApp();
+}

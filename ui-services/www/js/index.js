@@ -17,6 +17,12 @@
  * under the License.
  */
 console.log("index.js")
+document.addEventListener("backbutton", onBackKeyDown, false);
+
+function onBackKeyDown() {
+    navigator.app.exitApp();
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
