@@ -40,10 +40,16 @@ const getReputation = (web3, userId, callback) => {
 };
 
 const getNonce = (web3, borrower, callback) => {
-    const contract = new web3.eth.Contract(JSON.parse(compiledContracts["OnBoarding.sol:OnBoarding"].abi));
-    contract.methods.borrowerNonce().call({from: config.geth.account.address}, (err, result) => {
+    getAddressById(web3, borrower, (err, borrowerAddress) => {
         if(!err) {
-            callback(null, result);
+            const contract = new web3.eth.Contract(JSON.parse(compiledContracts["User.sol:User"].abi), borrowerAddress);
+            contract.methods.borrowerNonce().call({from: config.geth.account.address}, (err, result) => {
+                if(!err) {
+                    callback(null, result);
+                } else {
+                    callback(err, null);
+                }
+            });
         } else {
             callback(err, null);
         }

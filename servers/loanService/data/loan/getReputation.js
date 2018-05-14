@@ -16,9 +16,9 @@ module.exports = {
      * responses: 200
      * operationId: 
      */
-    get: {
+    post: {
         200: function (req, res, callback) {
-            const userId = req.query.userId;
+            const userId = req.payload.userId;
 
             readContractVariables.getReputation(web3, userId, callback);
         }

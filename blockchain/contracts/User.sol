@@ -25,10 +25,10 @@ contract User {
 	mapping(bytes32 => Loan) loansProvided;
 	mapping(bytes32 => Loan) loansTaken;
 	
-	event LoanProvided(bytes32 loanId, bytes32 borrowerId, bytes32 lenderId, uint256 amount, uint256 noOfInstallments, uint256 interestRate, uint256 timePeriod);
-	event LoanTaken(bytes32 loanId, bytes32 borrowerId, bytes32 lenderId, uint256 amount, uint256 noOfInstallments, uint256 interestRate, uint256 timePeriod);
-	event InstallmentRepaid(bytes32 loanId, bytes32 borrowerId, bytes32 lenderId, uint256 installmentAmount, uint256 remainingAmountToRepay);
-	event CloseLoan(bytes32 loanId, bytes32 borrowerId, bytes32 lenderId, address closer);
+	event LoanProvided(bytes32 indexed loanId, bytes32 borrowerId, bytes32 indexed lenderId, uint256 amount, uint256 noOfInstallments, uint256 interestRate, uint256 timePeriod);
+	event LoanTaken(bytes32 indexed loanId, bytes32 indexed borrowerId, bytes32 lenderId, uint256 amount, uint256 noOfInstallments, uint256 interestRate, uint256 timePeriod);
+	event InstallmentRepaid(bytes32 indexed loanId, bytes32 borrowerId, bytes32 lenderId, uint256 installmentAmount, uint256 remainingAmountToRepay);
+	event CloseLoan(bytes32 indexed loanId, bytes32 indexed borrowerId, bytes32 indexed lenderId, address closer);
 	event ExtraAmountPaid(bytes32 loanId, bytes32 borrowerId, bytes32 lenderId, uint extraAmount);
 	event ReputationChanged(bytes32 loanId, bytes32 userId, uint256 reputationChange, uint256 currentReputation);
 	// TODO - create nominees for changing userKey

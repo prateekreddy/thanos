@@ -17,9 +17,9 @@ module.exports = {
      * responses: 200
      * operationId: 
      */
-    get: {
+    post: {
         200: function (req, res, callback) {
-            const borrower = req.query.borrower;
+            const borrower = req.payload.borrower;
 
             readContractVariables.getNonce(web3, borrower, callback);
         }

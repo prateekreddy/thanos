@@ -4,24 +4,25 @@ const readContractVariables = require('../../lib/readContractVariables');
 const config = require("../../config/config.json");
 
 const web3 = new Web3(new Web3.providers.HttpProvider(config.geth.url));
-
 /**
- * Operations on /loan/getAddressById
+ * Operations on /loan/getEthTxNonce
  */
 module.exports = {
     /**
-     * summary: This endpoint gives the number of loan taken till now.
+     * summary: This endpoint helps to add an bank account to the application.
      * description: 
-     * parameters: Id
+     * parameters: accountDetails
      * produces: 
      * responses: 200
      * operationId: 
      */
     post: {
         200: function (req, res, callback) {
-            const id = req.payload.Id;
+            const address = req.payload.address;
 
-            readContractVariables.getAddressById(web3, id, callback);
+            web3.eth.getTransactionCount(address, (err, nonce) => {
+                callback(err, nonce);
+            });
         }
     }
 };

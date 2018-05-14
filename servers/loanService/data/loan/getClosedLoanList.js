@@ -4,24 +4,22 @@ const readContractVariables = require('../../lib/readContractVariables');
 const config = require("../../config/config.json");
 
 const web3 = new Web3(new Web3.providers.HttpProvider(config.geth.url));
-
 /**
- * Operations on /loan/getAddressById
+ * Operations on /loan/getClosedLoanList
  */
 module.exports = {
     /**
-     * summary: This endpoint gives the number of loan taken till now.
+     * summary: This endpoint helps to add an bank account to the application.
      * description: 
-     * parameters: Id
+     * parameters: userDetails
      * produces: 
      * responses: 200
      * operationId: 
      */
     post: {
         200: function (req, res, callback) {
-            const id = req.payload.Id;
-
-            readContractVariables.getAddressById(web3, id, callback);
+            const userId = req.payload.userId;
+            
         }
     }
 };

@@ -112,37 +112,96 @@ paths:
           description: >-
             Response object contains the details regarding the fund closing request.
   /loan/getNonce:
-    get:
+    post:
       summary: This endpoint gives the number of loan taken till now.
       parameters: 
-        - name: borrower
-          in: query
+        - name: borrowerDetails
+          in: body
           required: true
-          type: string
+          schema:
+            $ref: '#/definitions/borrowerDetails'
       responses:
         '200':
           description: >-
             Response object contains the details regarding the fund closing request.
   /loan/getAddressById:
-    get:
+    post:
       summary: This endpoint gives the number of loan taken till now.
       parameters: 
         - name: Id
-          in: query
+          in: body
           required: true
-          type: string
+          schema:
+            $ref: '#/definitions/userDetails'
       responses:
         '200':
           description: >-
             Response object contains the details regarding the fund closing request.
   /loan/getReputation:
-    get:
+    post:
       summary: This endpoint gives the reputation given the userId
       parameters:
         - name: userId
-          in: query
+          in: body
           required: true
-          type: string
+          schema:
+            $ref: '#/definitions/userDetails'
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/getAbi:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: entityDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/entityDetails'
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/getEthTxNonce:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: accountDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/accountDetails'
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/getOpenLoanList:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: userDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/userDetails'
+      responses:
+        '200':
+          description: >-
+            Response object contains the details regarding the fund closing request.
+  /loan/getClosedLoanList:
+    post:
+      summary: This endpoint helps to add an bank account to the application.
+      parameters:
+        - name: userDetails
+          in: body
+          description: This contains the details that are needed to identify the fund to be closed.
+          required: true
+          schema:
+            $ref: '#/definitions/userDetails'
       responses:
         '200':
           description: >-
@@ -159,4 +218,12 @@ definitions:
   loanCloseDetails:
     type: object
   installmentDetails:
+    type: object
+  entityDetails:
+    type: object
+  accountDetails:
+    type: object
+  userDetails:
+    type: object
+  borrowerDetails:
     type: object

@@ -1,13 +1,13 @@
 'use strict';
-var dataProvider = require('../../data/loan/getAddressById.js');
+var dataProvider = require('../../data/loan/getClosedLoanList.js');
 /**
- * Operations on /loan/getAddressById
+ * Operations on /loan/getClosedLoanList
  */
 module.exports = {
     /**
-     * summary: This endpoint gives the number of loan taken till now.
+     * summary: This endpoint helps to add an bank account to the application.
      * description: 
-     * parameters: Id
+     * parameters: userDetails
      * produces: 
      * responses: 200
      */
@@ -20,7 +20,7 @@ module.exports = {
         var provider = dataProvider['post']['200'];
         provider(req, reply, function (err, data) {
             if (err) {
-                reply(err);
+                reply(err).code(403);
                 return;
             }
             reply(data).code(status);
