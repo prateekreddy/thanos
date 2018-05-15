@@ -8,7 +8,12 @@ var Buy = require('../models/mongo.config.buy');
 var contractService = "http://10.200.208.43:8000"
 
 router.post('/list',function(req,res){
-    Buy.find({expired:false}).sort({amount:1}).exec(function(err,docs){
+    Buy.find({
+        expired:false
+        // $not:{
+        //     userId:req.body.userId
+        // }
+    }).sort({amount:1}).exec(function(err,docs){
         res.send(docs)
     })
 })

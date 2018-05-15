@@ -28,22 +28,22 @@ axios.post(thanosConfig.mongoService+":3001/sell/loan/closed/list",{
     }
 })
 
-function selectloan(element){
-    amount = element.childNodes[0].innerHTML
-    duration = element.childNodes[1].innerHTML
-    interest = element.childNodes[2].innerHTML
-    installment = element.childNodes[3].innerHTML
+// function selectloan(element){
+//     amount = element.childNodes[0].innerHTML
+//     duration = element.childNodes[1].innerHTML
+//     interest = element.childNodes[2].innerHTML
+//     installment = element.childNodes[3].innerHTML
 
-    if(element.style.backgroundColor == ""){
-        for (let i = 0; i < document.getElementsByClassName("selectedColumns").length; i++) {
-            let elem = document.getElementsByClassName("selectedColumns")[i];
-            elem.style.backgroundColor = ""                  
-        }    
-        element.style.backgroundColor = "#c1d5e5"
-    }else if (element.style.backgroundColor == "rgb(193, 213, 229)"){
-        element.style.backgroundColor = ""       
-    }
-}
+//     if(element.style.backgroundColor == ""){
+//         for (let i = 0; i < document.getElementsByClassName("selectedColumns").length; i++) {
+//             let elem = document.getElementsByClassName("selectedColumns")[i];
+//             elem.style.backgroundColor = ""                  
+//         }    
+//         element.style.backgroundColor = "#c1d5e5"
+//     }else if (element.style.backgroundColor == "rgb(193, 213, 229)"){
+//         element.style.backgroundColor = ""       
+//     }
+// }
 
 function cancelRequest(){
     window.location.href = "../views/account.html"

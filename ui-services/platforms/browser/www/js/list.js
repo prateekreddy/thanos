@@ -13,14 +13,20 @@ var ABI;
 console.log(privateKey)
 // document.getElementById("customers")
 axios.post(thanosConfig.mongoService+":3001/buy/list",{
-
+    userId:localStorage.getItem("userId")
 }).then(function(response){
     console.log(response.data)
     document.getElementById("customers").innerHTML
 
     for (let i = 0; i < response.data.length; i++) {
-        var append = "<tr id='"+response.data[i]._id+"_"+response.data[i].user+"' class='selectedColumns' onclick='selectloan(this)'><td>"+response.data[i].amount+"</td><td>"+response.data[i].duration+"</td><td>"+response.data[i].interest+"</td><td>"+response.data[i].installment+"</td></tr>";
-        document.getElementById("customers").innerHTML += append;        
+        let loanRequest = response.data[i];
+        axios.post(thanosConfig.mongoService+":3001/getReputation",{
+            userId: loanRequest.user
+        }).then((res) => {
+            var append = "<tr id='"+loanRequest._id+"_"+loanRequest.user+"' class='selectedColumns' onclick='selectloan(this)'><td>"+loanRequest.amount+"</td><td>"+loanRequest.duration+"</td><td>"+loanRequest.interest+"</td><td>"+loanRequest.installment+"</td><td class='reputation'>"+res.data.reputation+"</td></tr>";
+            document.getElementById("customers").innerHTML += append;            
+        })
+        
     }
 })
 

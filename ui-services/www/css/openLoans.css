@@ -190,3 +190,10 @@ button{
     color: white;
 }
 
+.lenderrow{
+    background: rgb(87, 152, 226);
+}
+
+.borrowerrow{
+    background: #34aa54;
+}

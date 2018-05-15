@@ -46,15 +46,19 @@ router.post('/register', (req, res, next) => {
 router.post('/getReputation', (req, res, next) => {
   console.log(req.body);
   creditScore.findOne({
-    userId: req.body.userId
+    userId: req.body.userId 
   }, (err, doc) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  
-    res.send({
-      status: "y",
-      "reputation": doc.creditScore
-    })
+    if(!err) {
+      console.log(doc);
+      res.send({
+        status: "y",
+        "reputation": doc.creditScore
+      }) 
+    } else {
+      res.send({
+        status: "n"
+      }) 
+    }
   })
 })
 

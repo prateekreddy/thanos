@@ -21,7 +21,12 @@ axios.post(thanosConfig.mongoService+":3001/sell/loan/open/list",{
     }
 
     for (let i = 0; i < response.data.openLoans.length; i++) {
-        var append = "<tr id='"+response.data.openLoans[i]._id+"_"+response.data.openLoans[i].user+"' class='selectedColumns' onclick='selectloan(this)'><td>"+parseInt(response.data.openLoans[i].dueAmount)+"</td><td>"+response.data.openLoans[i].duration+"</td><td>"+response.data.openLoans[i].interest+"</td><td>"+response.data.openLoans[i].installment+"</td></tr>";
+        if(localStorage.getItem("userId")==response.data.openLoans[i].borrowerId){
+            var append = "<tr id='"+response.data.openLoans[i]._id+"_"+response.data.openLoans[i].user+"' class='selectedColumns borrowRow' onclick='selectloan(this)'><td class='borrowerrow'></td><td>"+parseInt(response.data.openLoans[i].dueAmount)+"</td><td>"+response.data.openLoans[i].duration+"</td><td>"+response.data.openLoans[i].interest+"</td><td>"+response.data.openLoans[i].installment+"</td></tr>";
+        }else{
+            var append = "<tr id='"+response.data.openLoans[i]._id+"_"+response.data.openLoans[i].user+"' class='selectedColumns lendRow' onclick='selectloan(this)'><td class='lenderrow'></td><td>"+parseInt(response.data.openLoans[i].dueAmount)+"</td><td>"+response.data.openLoans[i].duration+"</td><td>"+response.data.openLoans[i].interest+"</td><td>"+response.data.openLoans[i].installment+"</td></tr>";
+        }
+        
         document.getElementById("customers").innerHTML += append;        
     }
 })
@@ -31,6 +36,7 @@ function selectloan(element){
     duration = element.childNodes[1].innerHTML
     interest = element.childNodes[2].innerHTML
     installment = element.childNodes[3].innerHTML
+    console.log(element.classList, element.id, element.__proto__);
 
     if(element.style.backgroundColor == ""){
         for (let i = 0; i < document.getElementsByClassName("selectedColumns").length; i++) {
@@ -50,7 +56,11 @@ function openLoan() {
         console.log(element.id)
         if(element.style.backgroundColor == "rgb(193, 213, 229)"){
             idList = element.id.split("_");
-            window.location.href = "../views/repay.html?loanId="+idList[0];
+            if(element.classList[1] == "borrowRow") {
+                window.location.href = "../views/loanStatus.html?loanId="+idList[0];
+            } else if(element.classList[1] == "lendRow") {
+                window.location.href = "../views/repay.html?loanId="+idList[0];
+            }
         }
     };
     if(!idList) {
