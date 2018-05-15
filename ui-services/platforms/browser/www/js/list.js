@@ -10,7 +10,7 @@ var borrowerId;
 var lenderId;
 var doc;
 var ABI;
-console.log(privateKey)
+// console.log(privateKey)
 // document.getElementById("customers")
 axios.post(thanosConfig.mongoService+":3001/buy/list",{
     userId:localStorage.getItem("userId")
@@ -19,6 +19,10 @@ axios.post(thanosConfig.mongoService+":3001/buy/list",{
     document.getElementById("customers").innerHTML
 
     for (let i = 0; i < response.data.length; i++) {
+        console.log(response.data[i])
+        if(response.data[i].user == localStorage.getItem("userId")){
+            continue;
+        }
         let loanRequest = response.data[i];
         axios.post(thanosConfig.mongoService+":3001/getReputation",{
             userId: loanRequest.user

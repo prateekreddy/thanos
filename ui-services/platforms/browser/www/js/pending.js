@@ -4,7 +4,7 @@
 // let installment = document.getElementById('installment').value;
 
 // var privateKey;
-var privateKey = keythereum.recover(localStorage.getItem("password"), JSON.parse(localStorage.getItem("key")));
+// var privateKey = keythereum.recover(localStorage.getItem("password"), JSON.parse(localStorage.getItem("key")));
 // console.log(privateKey)
 
 var tempDoc;
@@ -35,7 +35,8 @@ function editLoan(){
     let interest = document.getElementById("loanamount").value;
     let duration = document.getElementById("loanamount").value;
     let installment = document.getElementById("loanamount").value;
-    var signature = signMessage(value+days+interest+installment+localStorage.getItem("userId"),privateKey)
+    // var signature = signMessage(value+days+interest+installment+localStorage.getItem("userId"),privateKey)
+    var signature = tempDoc.signature;
     axios.post(thanosConfig.mongoService+":3001/buy/update",{
         user: localStorage.getItem("userId"),
         contract : tempDoc.contract,
