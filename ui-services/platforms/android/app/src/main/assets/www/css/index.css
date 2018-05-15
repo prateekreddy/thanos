@@ -55,7 +55,8 @@ body{
 
 img{
     display: block;
+    padding-top: 5pt;
     margin: auto;
-    width: 45%;
+    width: 40%;
     height: auto
 }

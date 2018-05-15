@@ -58,7 +58,7 @@ input[type=number]{
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid #b4b6c1;
-    background-color: #e6edf7;
+    background-color: #ffffff;
     width: 100%
 }
 
@@ -74,7 +74,7 @@ input[type=number]{
     width: 30%;
     float: right;
     position: relative;
-    top: -38pt;
+    top: -45pt;
     /* left: 2pt; */
 }
 
@@ -82,7 +82,7 @@ input[type=number]{
     width: 30%;
     float: right;
     position: relative;
-    top: -38pt;
+    top: -45pt;
     /* left: 2pt; */
 }
 
@@ -90,7 +90,7 @@ input[type=number]{
     width: 30%;
     float: right;
     position: relative;
-    top: -38pt;
+    top: -45pt;
     /* left: 2pt; */
 }
 
@@ -110,15 +110,19 @@ input[type=number]{
     left: -20pt;
 }
 
+.repayAmountTag input{
+    background-color: #c1d5e5
+}
+
 .z{
     color:#3469c4
 }
 
 button{
-    background-color: #3469c4;
+    background-color: #34aa54;
     color: #ffffff;
     border-radius: 2px;
-    /* box-shadow: 2px 2px 2px 2px #3469c4; */
+    box-shadow: #34aa54;
     font-size: 11pt;
     padding: 15pt 25%;
     font-family: montserrat_light;
@@ -126,67 +130,13 @@ button{
     border: none;
 }
 
-.buttons {
-    margin-top: 0;
-}
-
 .myBtn{
     position: relative;
-    margin: 2pt 0;
-}
-
-.adjacent {
-    width: 45%;
+    top: 40pt;
 }
 
 .myBtn2{
+    position: relative;
+    top:180pt;
     background-color: #9aaab8
 }
-
-.green {
-    background-color: #34aa54;
-}
-
-.lightblue {
-    background-color: rgb(87, 152, 226)
-}
-
-#loanlist{
-    background-color: white;
-    padding: 8pt;
-    box-shadow: 2px 2px 2px 2px white;
-    border-radius: 2px; 
-    height: 300pt;
-    overflow-y: auto;
-    overflow-x: hidden;
-    text-align: center;
-}
-
-#customers {
-    /* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; */
-    font-family: montserrat_light;
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 100%;
-    text-overflow: ellipsis;
-}
-
-
-#customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-    font-family: montserrat_regular;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-#customers tr:nth-child(odd){background-color: white;}
-
-#customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: #9aaab8;
-    color: white;
-}
-

@@ -62,7 +62,7 @@
                         YOUR CREDIT SCORE
                     </div>
                     <div class="creditscore" id="scorenumber">
-                        1000
+                        
                     </div>
                 </div>
           </div>
@@ -70,7 +70,7 @@
     <div class="account">
         <div class="welcome">
                 <div class="userid">
-                    <a>Initiate a new transaction</a>
+                    <a>Initiate a new Loan</a>
                 </div>
                 <div class="wrapper borrow" id="borrow">
                         <button onclick="borrowClick()" class="myBtn borrowBtn">I want to Borrow Money</button>
@@ -81,9 +81,9 @@
         </div>
     </div>
     <div class="account">
-        <div class="welcome" id="midRunningTx">
+        <div class="welcome" id="midRunningTx" onclick="openLoanList()">
             <div class="userid">
-                Running Transactions            
+                Open Loans            
             </div>
         </div>
     </div>
@@ -95,9 +95,9 @@
         </div>
     </div> -->
     <div class="account">
-        <div class="welcome" id="midCloseTx">
+        <div class="welcome" id="midCloseTx" onclick="closeLoanList()">
             <div class="userid">
-                Closed Transactions
+                Closed Loans
             </div>
         </div>
     </div>

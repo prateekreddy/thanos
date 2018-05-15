@@ -3,10 +3,12 @@
 // let interest = document.getElementById('interest').value;
 // let installment = document.getElementById('installment').value;
 
+// var privateKey;
 var privateKey = keythereum.recover(localStorage.getItem("password"), JSON.parse(localStorage.getItem("key")));
-console.log(privateKey)
+// console.log(privateKey)
 
 var tempDoc;
+var loanId;
 axios.post(thanosConfig.mongoService+":3001/buy/loan",{
     user: localStorage.getItem("userId")
 }).then(function(response){
@@ -16,7 +18,7 @@ axios.post(thanosConfig.mongoService+":3001/buy/loan",{
         document.getElementById("days").value = response.data.doc.duration;
         document.getElementById("interest").value = response.data.doc.interest;
         document.getElementById("installment").value = response.data.doc.installment;
-
+        loanId = response.data.doc._id;
         document.getElementById("loanId").innerHTML = response.data.doc._id;
         tempDoc = response.data.doc;
     }else{
@@ -62,6 +64,10 @@ function negotiate(){
     }).then(function(response){
         console.log(response.data)
     })
+}
+
+function openBidList() {
+    window.location.href = '../views/bidList.html?loanId='+loanId;
 }
 
 function signMessage (message, privateKey) {
