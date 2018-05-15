@@ -22,9 +22,9 @@ axios.post(thanosConfig.mongoService+":3001/sell/loan/open/list",{
 
     for (let i = 0; i < response.data.openLoans.length; i++) {
         if(localStorage.getItem("userId")==response.data.openLoans[i].borrowerId){
-            var append = "<tr id='"+response.data.openLoans[i]._id+"_"+response.data.openLoans[i].user+"' class='selectedColumns borrowRow' onclick='selectloan(this)'><td class='borrowerrow'></td><td>"+parseInt(response.data.openLoans[i].dueAmount)+"</td><td>"+response.data.openLoans[i].duration+"</td><td>"+response.data.openLoans[i].interest+"</td><td>"+response.data.openLoans[i].installment+"</td></tr>";
+            var append = "<tr id='"+response.data.openLoans[i]._id+"_"+response.data.openLoans[i].user+"' class='selectedColumns lendRow' onclick='selectloan(this)'><td class='borrowerrow'></td><td>"+parseInt(response.data.openLoans[i].dueAmount)+"</td><td>"+response.data.openLoans[i].duration+"</td><td>"+response.data.openLoans[i].interest+"</td><td>"+response.data.openLoans[i].installment+"</td></tr>";
         }else{
-            var append = "<tr id='"+response.data.openLoans[i]._id+"_"+response.data.openLoans[i].user+"' class='selectedColumns lendRow' onclick='selectloan(this)'><td class='lenderrow'></td><td>"+parseInt(response.data.openLoans[i].dueAmount)+"</td><td>"+response.data.openLoans[i].duration+"</td><td>"+response.data.openLoans[i].interest+"</td><td>"+response.data.openLoans[i].installment+"</td></tr>";
+            var append = "<tr id='"+response.data.openLoans[i]._id+"_"+response.data.openLoans[i].user+"' class='selectedColumns borrowRow' onclick='selectloan(this)'><td class='lenderrow'></td><td>"+parseInt(response.data.openLoans[i].dueAmount)+"</td><td>"+response.data.openLoans[i].duration+"</td><td>"+response.data.openLoans[i].interest+"</td><td>"+response.data.openLoans[i].installment+"</td></tr>";
         }
         
         document.getElementById("customers").innerHTML += append;        
