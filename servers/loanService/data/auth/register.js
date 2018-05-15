@@ -59,12 +59,12 @@ module.exports = {
                         gas: web3.utils.toHex(99999999)
                     }).on('receipt', (receipt) => {
                         if(receipt.status) {
-                            web3.eth.sendTransaction({
-                                from: config.geth.account.address,
-                                to: userKey,
-                                value: web3.utils.toWei(1)
-                            }, console.log).then((receipt) => {
-                                console.log("registering", receipt)
+                           // web3.eth.sendTransaction({
+                            //    from: config.geth.account.address,
+                            //    to: userKey,
+                          //      value: web3.utils.toWei(1)
+                          //  }, console.log).then((receipt) => {
+                            //    console.log("registering", receipt)
                                 readContractVariables.getAddressById(web3, userId, (err, res) => {
                                     if(!err) {
                                         user.create({
@@ -83,7 +83,7 @@ module.exports = {
                                         callback({err: "error creating user, Please try again."}, null);
                                     }
                                 })
-                            }).on('error', console.log)
+                        //    }).on('error', console.log)
                         } else {
                             callback({err: "user creation failed. Please try again."}, null);
                         }
