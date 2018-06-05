@@ -1,4 +1,4 @@
 var thanosConfig = {
-    "loginServer":"http://54.218.47.26",
-    "mongoService":"http://54.218.47.26"
+    "loginServer":"http://34.220.50.194",
+    "mongoService":"http://34.220.50.194"
 }
