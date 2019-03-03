@@ -41,7 +41,7 @@ function borrowClick(){
     if(response.data.info == 0){
         window.location.href = "../views/borrow.html"
     }else{
-        alert("Already Loan")
+        alert("Already one request exists. Redirecting to it to make edits.")
         window.location.href = "../views/pending.html"
     }
  })
@@ -79,10 +79,26 @@ function logout(){
     navigator.app.exitApp();
 }
 function getCreditScore() {
-    axios.get(thanosConfig.loginServer+":8000/loan/getReputation?userId="+localStorage.getItem("userId")).then((resp) => {
-        console.log(response.data);
-        $("#scorenumber").html = response.data;
-    });
+    // axios.get(thanosConfig.loginServer+":8000/loan/getReputation?userId="+localStorage.getItem("userId")).then((resp) => {
+    //     console.log(response.data);
+    //     $("#scorenumber").html = response.data;
+    // });
+    console.log("requesting credit score")
+    axios.post(thanosConfig.mongoService+":3001/getReputation", {
+        userId: localStorage.getItem("userId")
+    }).then((resp) => {
+        console.log(resp.data)
+        $("#scorenumber").html(resp.data.reputation)        ;
+    })
 }
 
 getCreditScore();
+
+
+function closeLoanList() {
+    window.location.href = "../views/closeLoans.html"
+}
+
+function openLoanList() {
+    window.location.href = "../views/openLoans.html"
+}

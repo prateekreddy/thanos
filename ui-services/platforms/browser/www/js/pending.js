@@ -3,10 +3,12 @@
 // let interest = document.getElementById('interest').value;
 // let installment = document.getElementById('installment').value;
 
-var privateKey = keythereum.recover(localStorage.getItem("password"), JSON.parse(localStorage.getItem("key")));
-console.log(privateKey)
+// var privateKey;
+// var privateKey = keythereum.recover(localStorage.getItem("password"), JSON.parse(localStorage.getItem("key")));
+// console.log(privateKey)
 
 var tempDoc;
+var loanId;
 axios.post(thanosConfig.mongoService+":3001/buy/loan",{
     user: localStorage.getItem("userId")
 }).then(function(response){
@@ -16,7 +18,7 @@ axios.post(thanosConfig.mongoService+":3001/buy/loan",{
         document.getElementById("days").value = response.data.doc.duration;
         document.getElementById("interest").value = response.data.doc.interest;
         document.getElementById("installment").value = response.data.doc.installment;
-
+        loanId = response.data.doc._id;
         document.getElementById("loanId").innerHTML = response.data.doc._id;
         tempDoc = response.data.doc;
     }else{
@@ -33,7 +35,8 @@ function editLoan(){
     let interest = document.getElementById("loanamount").value;
     let duration = document.getElementById("loanamount").value;
     let installment = document.getElementById("loanamount").value;
-    var signature = signMessage(value+days+interest+installment+localStorage.getItem("userId"),privateKey)
+    // var signature = signMessage(value+days+interest+installment+localStorage.getItem("userId"),privateKey)
+    var signature = tempDoc.signature;
     axios.post(thanosConfig.mongoService+":3001/buy/update",{
         user: localStorage.getItem("userId"),
         contract : tempDoc.contract,
@@ -51,7 +54,6 @@ function editLoan(){
             alert(response.data.info)
         }
     })
-
 }
 
 // document.getElementById("loanamount").value == tempDoc.amount && document.getElementById("interest").value == tempDoc.interest && document.getElementById("days").value == tempDoc.duration && document.getElementById("installment").value == tempDoc.installment
@@ -63,6 +65,10 @@ function negotiate(){
     }).then(function(response){
         console.log(response.data)
     })
+}
+
+function openBidList() {
+    window.location.href = '../views/bidList.html?loanId='+loanId;
 }
 
 function signMessage (message, privateKey) {

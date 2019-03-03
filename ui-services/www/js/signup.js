@@ -24,7 +24,16 @@ function register(){
                     window.localStorage.setItem("name",name)
                     window.localStorage.setItem("userId",response.data.userId)
                     window.localStorage.setItem("password",password)
-                    window.location.href="upi.html?mobile="+mobile
+                    axios.post(thanosConfig.mongoService+":3001/register", {
+                       userId: response.data.userId,
+                       creditScore: 1000 
+                    }).then((resp) => {
+                        if(resp.data.status == 'y') {
+                            window.location.href="upi.html?mobile="+mobile;
+                        } else {
+                            alert("Registration failed")
+                        }
+                    });
                 }else{
                     alert("Registration failed")
                 }

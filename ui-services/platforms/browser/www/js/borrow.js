@@ -1,5 +1,6 @@
 var privateKey = keythereum.recover(localStorage.getItem("password"), JSON.parse(localStorage.getItem("key")));
-console.log(privateKey)
+// var privateKey;
+// console.log(privateKey)
 function submitRequest(){
      let value = document.getElementById('loanamount').value;
      let days = document.getElementById('days').value;
@@ -34,7 +35,7 @@ function submitRequest(){
 }   
 
 function cancelRequest(){
-    location.window.href = "../views/account.html"
+    window.location.href = "../views/account.html"
 }
 
 function signMessage (message, privateKey) {

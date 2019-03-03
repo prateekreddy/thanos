@@ -1,0 +1,192 @@
+@font-face{
+    src: url("../fonts/Montserrat-Light.ttf");
+    font-family: montserrat_light;
+}
+
+@font-face{
+    src: url("../fonts/Montserrat-Regular.ttf");
+    font-family: montserrat_regular;
+}
+body{
+    background-color: #c1d5e5;
+    font-family: montserrat_light;
+    margin :0;
+    overflow-y: hidden;
+    font-size: 11pt;
+}
+
+.upi{
+    color: #21273a;
+    font-family: montserrat_regular;
+    background-color: white;
+    margin: 0 0;
+    padding: 5pt 15pt;
+    box-shadow: 2px 2px 2px 1px #9aaab8;
+}
+
+.heading{
+    text-align: left;
+    text-justify: left;
+    font-family: montserrat_light;
+    font-size: 16pt;
+}
+
+.account{
+    padding: 8pt 15pt;
+}
+
+.welcome{
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px grey;
+    border-radius: 2px;
+    padding: 8pt 15pt;
+}
+
+.inputBox{
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px grey;
+    border-radius: 2px
+}
+
+.inputTag{
+    padding: 11pt 8pt;
+}
+
+input[type=number]{
+    padding: 12px 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #b4b6c1;
+    background-color: #e6edf7;
+    width: 100%
+}
+
+.wrapper{
+    padding: 0 8pt;
+}
+
+.timeInputTag{
+    width:32%;
+}
+
+.interestInputTag{
+    width: 30%;
+    float: right;
+    position: relative;
+    top: -38pt;
+    /* left: 2pt; */
+}
+
+.installmentInputTag{
+    width: 30%;
+    float: right;
+    position: relative;
+    top: -38pt;
+    /* left: 2pt; */
+}
+
+.wrapperInputTag{
+    width: 30%;
+    float: right;
+    position: relative;
+    top: -38pt;
+    /* left: 2pt; */
+}
+
+.monthInputTag{
+    width: 15%;
+    float: right;
+    position: relative;
+    top: -38pt;
+    left: -20pt;
+}
+
+.yearInputTag{
+    width: 15%;
+    float: right;
+    position: relative;
+    top: -38pt;
+    left: -20pt;
+}
+
+.z{
+    color:#3469c4
+}
+
+button{
+    background-color: #3469c4;
+    color: #ffffff;
+    border-radius: 2px;
+    /* box-shadow: 2px 2px 2px 2px #3469c4; */
+    font-size: 11pt;
+    padding: 15pt 25%;
+    font-family: montserrat_light;
+    width: 100%;
+    border: none;
+}
+
+.buttons {
+    margin-top: 0;
+}
+
+.myBtn{
+    position: relative;
+    margin: 2pt 0;
+}
+
+.adjacent {
+    width: 45%;
+}
+
+.myBtn2{
+    background-color: #9aaab8
+}
+
+.green {
+    background-color: #34aa54;
+}
+
+.lightblue {
+    background-color: rgb(87, 152, 226)
+}
+
+#loanlist{
+    background-color: white;
+    padding: 8pt;
+    box-shadow: 2px 2px 2px 2px white;
+    border-radius: 2px; 
+    height: 350pt;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+#customers {
+    /* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; */
+    font-family: montserrat_light;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-family: montserrat_regular;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:nth-child(odd){background-color: white;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #9aaab8;
+    color: white;
+}
+
