@@ -104,38 +104,42 @@ router.post('/loan/approve', (req, res, next) => {
   const loanId = req.body.loanId;
   const lenderId = req.body.lenderId;
   Buy.findByIdAndRemove(loanId, (err, loan) => {
-    const dueAmount = parseInt(loan.amount + (loan.amount*loan.duration*loan.interest)/(100*365));
-    Loans.create({
-      lenderId: lenderId,
-      borrowerId: loan.user,
-      loanId: loan._id,
-      amount: loan.amount,
-      dueAmount,
-      interest: loan.interest,
-      duration: loan.duration,
-      installment: loan.installment
-    }, (err, result) => {
-      for(let i=0; i<loan.bid.length; i++) {
-        console.log(loan.bid[i]);
-        Sell.findByIdAndRemove(loan.bid[i])
-      }
-      Reputation.findOne({
-        userId: loan.user
-      }, (err, user) => {
-        const updatedReputation = user.creditScore - 20;
-        Reputation.findOneAndUpdate({
+    if(!err) {
+      const dueAmount = parseInt(loan.amount + (loan.amount*loan.duration*loan.interest)/(100*365));
+      Loans.create({
+        lenderId: lenderId,
+        borrowerId: loan.user,
+        loanId: loan._id,
+        amount: loan.amount,
+        dueAmount,
+        interest: loan.interest,
+        duration: loan.duration,
+        installment: loan.installment
+      }, (err, result) => {
+        for(let i=0; i<loan.bid.length; i++) {
+          console.log(loan.bid[i]);
+          Sell.findByIdAndRemove(loan.bid[i])
+        }
+        Reputation.findOne({
           userId: loan.user
-        }, {
-          creditScore: updatedReputation
-        }, (err, result) => {
-          if(!err) {
-            res.send({"status": "y", "info": "Loan has been processed."})
-          } else {
-            res.send({status: "n", "info": "mongo error", err});
-          }
+        }, (err, user) => {
+          const updatedReputation = user.creditScore - 20;
+          Reputation.findOneAndUpdate({
+            userId: loan.user
+          }, {
+            creditScore: updatedReputation
+          }, (err, result) => {
+            if(!err) {
+              res.send({"status": "y", "info": "Loan has been processed."})
+            } else {
+              res.send({status: "n", "info": "mongo error", err});
+            }
+          })
         })
       })
-    })
+    } else {
+      res.send({status: "n", "info": "mongo error", err});
+    }
   })
 })
 
