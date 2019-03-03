@@ -74,7 +74,12 @@ module.exports = {
                                             if(err) {
                                                 callback(err, null);
                                             } else {
-                                                callback(null, {userId, status: "Registered"});
+                                                creditScore.create({
+                                                    userId: req.body.userId,
+                                                    creditScore: 1000
+                                                  }, (err, doc) => {
+                                                    callback(null, {userId, status: "Registered"});
+                                                  })
                                             }
                                         })
                                 //     } else {
