@@ -46,27 +46,25 @@ module.exports = {
             const password = req.payload.password;
 
             checkIfUserExists(phoneNumber, (err, ifExists) => {
-                if(err) {
-                    callback(err, null);
-                } else if(ifExists) {
+                if(ifExists) {
                     // create user contract
                     const onBoardingAddress = config.onBoardingAddress;
                     const onBoardingContract = new web3.eth.Contract(JSON.parse(compiledContracts["OnBoarding.sol:OnBoarding"].abi), onBoardingAddress);
                     const userId = uid();
                     const encodedUserId = "0x"+rlp.encode(userId).toString('hex');
-                    onBoardingContract.methods.createUser(encodedUserId, userKey).send({
-                        from: config.geth.account.address,
-                        gas: web3.utils.toHex(99999999)
-                    }).on('receipt', (receipt) => {
-                        if(receipt.status) {
-                            web3.eth.sendTransaction({
-                                from: config.geth.account.address,
-                                to: userKey,
-                                value: web3.utils.toWei(1)
-                            }, console.log).then((receipt) => {
-                                console.log("registering", receipt)
-                                readContractVariables.getAddressById(web3, userId, (err, res) => {
-                                    if(!err) {
+                    // onBoardingContract.methods.createUser(encodedUserId, userKey).send({
+                    //     from: config.geth.account.address,
+                    //     gas: web3.utils.toHex(99999999)
+                    // }).on('receipt', (receipt) => {
+                    //     if(receipt.status) {
+                            // web3.eth.sendTransaction({
+                            //     from: config.geth.account.address,
+                            //     to: userKey,
+                            //     value: web3.utils.toWei(1)
+                            // }, console.log).then((receipt) => {
+                            //     console.log("registering", receipt)
+                                // readContractVariables.getAddressById(web3, userId, (err, res) => {
+                                //     if(!err) {
                                         user.create({
                                             name,
                                             phoneNumber,
@@ -79,17 +77,17 @@ module.exports = {
                                                 callback(null, {userId, status: "Registered"});
                                             }
                                         })
-                                    } else {
-                                        callback({err: "error creating user, Please try again."}, null);
-                                    }
-                                })
-                            }).on('error', console.log)
-                        } else {
-                            callback({err: "user creation failed. Please try again."}, null);
-                        }
-                    }).on('error', (err, receipt) => {
-                        callback(err, receipt);
-                    });
+                                //     } else {
+                                //         callback({err: "error creating user, Please try again."}, null);
+                                //     }
+                                // })
+                            // }).on('error', console.log)
+                        // } else {
+                        //     callback({err: "user creation failed. Please try again."}, null);
+                        // }
+                    // }).on('error', (err, receipt) => {
+                    //     callback(err, receipt);
+                    // });
                 } else {
                     callback({err: "User already exists. Please login."}, null);
                 }
